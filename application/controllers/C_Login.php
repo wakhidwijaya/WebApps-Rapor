@@ -33,7 +33,7 @@ class C_Login extends CI_Controller {
 				$data_session = array(
 //					'id' => $guru[nip],
 //					'nama' => $guru[nama],
-					'status' => 'login'
+					'status' => 'siswa'
 				);
 				$this->session->set_userdata($data_session);
 				redirect(base_url("siswa"));
@@ -46,7 +46,7 @@ class C_Login extends CI_Controller {
 				$data_session = array(
 //					'id' => $guru[nip],
 //					'nama' => $guru[nama],
-					'status' => 'login'
+					'status' => 'guru'
 				);
 				$this->session->set_userdata($data_session);
 				redirect(base_url("guru"));
