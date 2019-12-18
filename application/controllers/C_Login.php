@@ -10,52 +10,57 @@ class C_Login extends CI_Controller {
 	}
 
 	function index(){
-		$this->load->view('v_login');
+        if($this->session->userdata('status') == "1"){
+            redirect(base_url("siswa"));
+        }
+        else if($this->session->userdata('status') == "2"){
+            redirect(base_url("guru"));
+        }
+        else{
+            $this->load->view('v_login');
+        }
 	}
 
 	function login(){
-		$username = $this -> input -> post('username');
-		$password = $this -> input -> post('password');
+	    if ($this -> session -> userdata('status') != null){
+	        redirect(base_url());
+        }else{
+            $username = $this -> input -> post('username');
+            $password = $this -> input -> post('password');
 
-		$where = array(
-			'username' => $username,
-			'password' => md5($password)
-		);
-		$cek_login = $this->M_Login->cek_login("tb_user", $where)->num_rows();
-		$data_login = $this->M_Login->cek_login("tb_user", $where)->row_array();
+            $where = array(
+                'username' => $username,
+                'password' => md5($password)
+            );
+            $cek_login = $this->M_Login->cek_login("tb_user", $where)->num_rows();
 
-		if ($cek_login > 0){
-			if ($data_login['status'] == 1){
-				$where_id = array(
-					'nis' => $data_login['username']
-				);
-				$siswa = $this->M_Login->siswa("tb_siswa", $where_id)->row_array();
-				$data_session = array(
-//					'id' => $guru[nip],
-//					'nama' => $guru[nama],
-					'status' => 'siswa'
-				);
-				$this->session->set_userdata($data_session);
-				redirect(base_url("siswa"));
-			}
-			else{
-				$where_id = array(
-					'nip' => $data_login['username']
-				);
-				$guru = $this->M_Login->guru("tb_guru", $where_id)->row_array();
-				$data_session = array(
-//					'id' => $guru[nip],
-//					'nama' => $guru[nama],
-					'status' => 'guru'
-				);
-				$this->session->set_userdata($data_session);
-				redirect(base_url("guru"));
-			}
-		}
-		else{
-			echo "Username atau Password yang dimasukkan salah";
-		}
-	}
+            if ($cek_login > 0){
+                $data_login = $this->M_Login->cek_login("tb_user", $where)->row_array();
+                if ($data_login['status'] == 1){
+                    $data_session = array(
+    //					'id' => $guru[nip],
+    //					'nama' => $guru[nama],
+                        'status' => $data_login['status']
+                    );
+                    $this->session->set_userdata($data_session);
+                    redirect(base_url("siswa"));
+                }
+                else{
+                    $data_session = array(
+    //					'id' => $guru[nip],
+    //					'nama' => $guru[nama],
+                        'status' => $data_login['status']
+                    );
+                    $this->session->set_userdata($data_session);
+                    redirect(base_url("guru"));
+                }
+            }
+            else{
+                echo "Username atau Password yang dimasukkan salah";
+            }
+        }
+
+    }
 	function logout(){
 		$this->session->sess_destroy();
 		redirect(base_url());

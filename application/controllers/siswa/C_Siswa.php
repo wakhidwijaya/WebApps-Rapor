@@ -5,8 +5,9 @@ class C_Siswa extends CI_Controller {
     function __construct(){
         parent::__construct();
 
-        if($this->session->userdata('status') != "siswa"){
-            redirect(base_url());
+        if($this->session->userdata('status') != "1"){
+            $url = base_url();
+            redirect($url);
         }
     }
 	public function index()

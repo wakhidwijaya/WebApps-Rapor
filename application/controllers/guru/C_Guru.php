@@ -5,8 +5,9 @@ class C_Guru extends CI_Controller {
     function __construct(){
         parent::__construct();
 
-        if($this->session->userdata('status') != "guru"){
-            redirect(base_url());
+        if($this->session->userdata('status') != "2"){
+            $url = base_url();
+            redirect($url);
         }
     }
 
