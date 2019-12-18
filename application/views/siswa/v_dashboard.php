@@ -7,6 +7,10 @@
 </head>
 <body>
 <h1>Siswa</h1>
-
+<?php
+    foreach ($nilai as $datanilai){
+        echo $datanilai->id_nilai;
+    }
+?>
 </body>
 </html>
