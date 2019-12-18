@@ -12,6 +12,10 @@ class C_Guru extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('guru/v_dashboard');
-	}
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('guru/v_dashboard');
+        $this->load->view('layout/footer');
+
+    }
 }

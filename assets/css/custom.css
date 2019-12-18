@@ -1,0 +1,24 @@
+.underline {
+   border:1px solid #808080;
+   border-left:0px solid #808080;
+   border-radius: 4px;
+   outline:none; /* prevents textbox highlight in chrome */
+
+}
+.underlin {
+  width: 10px;
+   border:1px solid #808080;
+   border-radius: 4px;
+   outline:none; /* prevents textbox highlight in chrome */
+
+}
+
+.underline:focus{
+	 outline: none;
+    border:1px solid #808080;
+   border-left:0px solid #808080;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
