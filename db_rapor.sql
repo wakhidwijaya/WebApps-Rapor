@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 17, 2019 at 04:36 PM
+-- Generation Time: Dec 18, 2019 at 11:34 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -31,13 +31,6 @@ CREATE TABLE `tb_guru` (
   `status` int(1) NOT NULL,
   `mapel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_guru`
---
-
-INSERT INTO `tb_guru` (`id_guru`, `nip`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `status`, `mapel`) VALUES
-(1, 2019, 'Surtini', 2, 'Sleman', '1959-12-03', 'Berbah Sleman', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -77,8 +70,21 @@ INSERT INTO `tb_kelas` (`id_kelas`, `kelas`) VALUES
 CREATE TABLE `tb_mapel` (
   `id_mapel` int(11) NOT NULL,
   `kode_mapel` int(4) NOT NULL,
-  `mapel` int(11) NOT NULL
+  `mapel` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_mapel`
+--
+
+INSERT INTO `tb_mapel` (`id_mapel`, `kode_mapel`, `mapel`) VALUES
+(1, 1, 'Bahasa Indonesia'),
+(2, 2, 'Matematika'),
+(31, 3, 'Bahasa Inggris'),
+(32, 4, 'Ilmu Pengetahuan Alam'),
+(33, 5, 'Ilmu Pengetahuan Sosial'),
+(34, 6, 'Pendidikan Agama'),
+(35, 7, 'Penjaskes');
 
 -- --------------------------------------------------------
 
@@ -110,17 +116,9 @@ CREATE TABLE `tb_siswa` (
   `tempat_lahir` varchar(50) NOT NULL,
   `tanggal_lahir` date NOT NULL,
   `alamat` varchar(100) NOT NULL,
-  `wali_murid` varchar(50) NOT NULL,
+  `wali_murid` int(10) NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_siswa`
---
-
-INSERT INTO `tb_siswa` (`nis`, `nama`, `kelas`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `wali_murid`, `status`) VALUES
-(1531, 'Wakhid Wijaya', 1, 1, 'Bantul', '1998-03-24', 'Mandungan RT 03 Srimartani Piyungan Bantul', '1', 0),
-(1532, 'Muhammad Nurhuda Hendrian', 1, 1, 'Sleman', '1998-07-01', 'Ngaglik Sleman', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -130,19 +128,11 @@ INSERT INTO `tb_siswa` (`nis`, `nama`, `kelas`, `jenis_kelamin`, `tempat_lahir`,
 
 CREATE TABLE `tb_user` (
   `id_user` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
+  `username` int(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_user`
---
-
-INSERT INTO `tb_user` (`id_user`, `username`, `password`, `email`, `status`) VALUES
-(1, '1531', '202cb962ac59075b964b07152d234b70', 'wakhid@student.com', 1),
-(2, '2019', '202cb962ac59075b964b07152d234b70', 'sutirni@guru.com', 2);
 
 --
 -- Indexes for dumped tables
@@ -152,7 +142,9 @@ INSERT INTO `tb_user` (`id_user`, `username`, `password`, `email`, `status`) VAL
 -- Indexes for table `tb_guru`
 --
 ALTER TABLE `tb_guru`
-  ADD PRIMARY KEY (`id_guru`);
+  ADD PRIMARY KEY (`nip`) USING BTREE,
+  ADD UNIQUE KEY `id_guru` (`id_guru`) USING BTREE,
+  ADD KEY `mapel` (`mapel`);
 
 --
 -- Indexes for table `tb_kelas`
@@ -170,19 +162,25 @@ ALTER TABLE `tb_mapel`
 -- Indexes for table `tb_nilai`
 --
 ALTER TABLE `tb_nilai`
-  ADD PRIMARY KEY (`id_nilai`);
+  ADD PRIMARY KEY (`id_nilai`),
+  ADD KEY `id_siswa` (`id_siswa`),
+  ADD KEY `id_guru` (`id_guru`),
+  ADD KEY `id_mapel` (`id_mapel`);
 
 --
 -- Indexes for table `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  ADD PRIMARY KEY (`nis`);
+  ADD PRIMARY KEY (`nis`),
+  ADD KEY `kelas` (`kelas`),
+  ADD KEY `tb_siswa_ibfk_2` (`wali_murid`);
 
 --
 -- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -204,7 +202,7 @@ ALTER TABLE `tb_kelas`
 -- AUTO_INCREMENT for table `tb_mapel`
 --
 ALTER TABLE `tb_mapel`
-  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tb_nilai`
@@ -217,3 +215,35 @@ ALTER TABLE `tb_nilai`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tb_guru`
+--
+ALTER TABLE `tb_guru`
+  ADD CONSTRAINT `tb_guru_ibfk_1` FOREIGN KEY (`mapel`) REFERENCES `tb_mapel` (`id_mapel`);
+
+--
+-- Constraints for table `tb_nilai`
+--
+ALTER TABLE `tb_nilai`
+  ADD CONSTRAINT `tb_nilai_ibfk_1` FOREIGN KEY (`id_siswa`) REFERENCES `tb_siswa` (`nis`),
+  ADD CONSTRAINT `tb_nilai_ibfk_2` FOREIGN KEY (`id_guru`) REFERENCES `tb_guru` (`id_guru`),
+  ADD CONSTRAINT `tb_nilai_ibfk_3` FOREIGN KEY (`id_mapel`) REFERENCES `tb_mapel` (`id_mapel`);
+
+--
+-- Constraints for table `tb_siswa`
+--
+ALTER TABLE `tb_siswa`
+  ADD CONSTRAINT `tb_siswa_ibfk_1` FOREIGN KEY (`kelas`) REFERENCES `tb_kelas` (`id_kelas`),
+  ADD CONSTRAINT `tb_siswa_ibfk_2` FOREIGN KEY (`wali_murid`) REFERENCES `tb_guru` (`id_guru`);
+
+--
+-- Constraints for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  ADD CONSTRAINT `tb_user_ibfk_1` FOREIGN KEY (`username`) REFERENCES `tb_guru` (`nip`),
+  ADD CONSTRAINT `tb_user_ibfk_2` FOREIGN KEY (`username`) REFERENCES `tb_siswa` (`nis`);
