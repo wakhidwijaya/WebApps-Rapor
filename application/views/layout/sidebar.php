@@ -15,11 +15,11 @@
 				<li class="header">
 					<small>MAIN NAVIGATION</small>
 				</li>
-				<?php foreach ($menu as $key => $val): ?>
-				<li>
-					<a href="<?=base_url() . $val['controller_name'] . '/' . $val['action_name'] ?>"><i class="fa fa-<?=!empty($val['menu_icon']) ? $val['menu_icon'] : 'home' ?>"></i><span><?=$val['menu_name'] ?></span></a>
-				</li>
-				<?php endforeach ?>
+<!--				--><?php //foreach ($menu as $key => $val): ?>
+<!--				<li>-->
+<!--					<a href="--><?//=base_url() . $val['controller_name'] . '/' . $val['action_name'] ?><!--"><i class="fa fa---><?//=!empty($val['menu_icon']) ? $val['menu_icon'] : 'home' ?><!--"></i><span>--><?//=$val['menu_name'] ?><!--</span></a>-->
+<!--				</li>-->
+<!--				--><?php //endforeach ?>
 				<!-- <li>
 					<a href="<?php echo base_url('dasboard') ?>"><i class="fa fa-home"></i><span>Dashboard</span></a>
 				</li>
