@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 19, 2019 at 01:44 PM
+-- Generation Time: Dec 19, 2019 at 05:07 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -261,7 +261,37 @@ INSERT INTO `tb_siswa` (`nis`, `nama`, `kelas`, `jenis_kelamin`, `tempat_lahir`,
 (1916, 'ADITYA AHMAD ZEIN', 12, 0, 'sleman', '2000-04-02', 'sleman', 1, 0),
 (1917, 'AJI MUHAMMAD GANES WISUDA', 12, 0, 'sleman', '2000-01-15', 'sleman', 1, 0),
 (1918, 'andre ahmadi', 12, 0, 'sleman', '2000-05-09', 'sleman', 1, 0),
-(1919, 'siskae erma', 12, 1, 'sleman', '2000-04-12', 'sleman', 1, 0);
+(1919, 'siskae erma', 12, 1, 'sleman', '2000-04-12', 'sleman', 1, 0),
+(1920, 'FATA AULIA', 13, 1, 'sleman', '2000-02-05', 'sleman', 12, 0),
+(1921, 'ENDA PUTRI ATIKA', 13, 1, 'sleman', '2000-04-02', 'sleman', 12, 0),
+(1922, 'KEVIN ARYASATYA BAGASKARA', 13, 0, 'bantul', '2000-01-15', 'sleman', 12, 0),
+(1923, 'DENI PRIAMBODO KURNIAWAN', 13, 0, 'sleman', '2000-05-09', 'sleman', 12, 0),
+(1924, 'TOFAN ABRIANTO', 13, 0, 'sleman', '2000-04-12', 'sleman', 12, 0),
+(1925, 'PRAMUJI SEPTIAWAN', 13, 0, 'bantul', '2000-02-05', 'sleman', 12, 0),
+(1926, 'WAHID FAJAR ASSODIQ', 13, 0, 'sleman', '2000-04-02', 'sleman', 12, 0),
+(1927, 'MUHAMMAD ZAQI RAIHAN', 13, 0, 'sleman', '2000-01-15', 'sleman', 12, 0),
+(1928, 'NURUDIN SURYA GUNTORO', 13, 0, 'sleman', '2000-05-09', 'sleman', 12, 0),
+(1929, 'RINALDI GIPA OKTAPIAN', 13, 0, 'bantul', '2000-04-12', 'sleman', 12, 0),
+(1930, 'ZIKRILLAH', 14, 0, 'bantul', '2000-02-05', 'sleman', 13, 0),
+(1931, 'DICKY ANDHIKA RIZALDHI', 14, 0, 'bantul', '2000-04-02', 'sleman', 13, 0),
+(1932, 'DONY SETYA HERMAWANTO', 14, 0, 'sleman', '2000-01-15', 'sleman', 13, 0),
+(1933, 'NOVIA EKA PUTRI', 14, 1, 'bantul', '2000-05-09', 'sleman', 13, 0),
+(1934, 'RESKI ANDRIAN', 14, 0, 'sleman', '2000-04-12', 'sleman', 13, 0),
+(1935, 'ALVEIN MOHAMMAD KANNABI', 14, 0, 'bantul', '2000-02-05', 'sleman', 13, 0),
+(1936, 'BAYU WICAHYONO', 14, 0, 'SLEMAN', '2000-04-02', 'sleman', 13, 0),
+(1937, 'NURZAHRAH', 14, 1, 'SLEMAN', '2000-01-15', 'sleman', 13, 0),
+(1938, 'FITRI FEBRIANI', 14, 1, 'SLEMAN', '2000-05-09', 'SLEMAN', 13, 0),
+(1939, 'WILLY WAHYU', 14, 1, 'SLEMAN', '2000-04-12', 'SLEMAN', 13, 0),
+(1940, 'RIKE TANRIYA', 15, 1, 'SLEMAN', '2000-02-05', 'SLEMAN', 16, 0),
+(1941, 'VIVI YULVIANA', 15, 1, 'SLEMAN', '2000-04-02', 'SLEMAN', 16, 0),
+(1942, 'YAHYA SARIFUDIN', 15, 0, 'bantul', '2000-01-15', 'SLEMAN', 16, 0),
+(1943, 'IDHAM MUHAMMAD IRFANI', 15, 0, 'bantul', '2000-05-09', 'sleman', 16, 0),
+(1944, 'MUHAMMAD GORBY ASH SHIDDIQY', 15, 0, 'bantul', '2000-04-12', 'sleman', 16, 0),
+(1945, 'ANUGERAH NIRWAN FIRDAUS', 15, 0, 'sleman', '2000-02-05', 'sleman', 16, 0),
+(1946, 'DWI SUSANTO', 15, 0, 'sleman', '2000-04-02', 'sleman', 16, 0),
+(1947, 'FAHMI', 15, 0, 'SLEMAN', '2000-01-15', 'sleman', 16, 0),
+(1948, 'NAJIB RIDWAN', 15, 0, 'bantul', '2000-05-09', 'sleman', 16, 0),
+(1949, 'RINI MARETA', 15, 1, 'sleman', '2000-04-12', 'sleman', 16, 0);
 
 -- --------------------------------------------------------
 

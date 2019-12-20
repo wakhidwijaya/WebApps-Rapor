@@ -7,11 +7,4 @@ class M_Login extends CI_Model
 		return $this -> db -> get_where($table, $where);
 	}
 
-	function siswa($table, $where){
-		return $this-> db -> get_where($table, $where);
-	}
-	function guru($table, $where){
-		return $this-> db -> get_where($table, $where);
-	}
-
 }

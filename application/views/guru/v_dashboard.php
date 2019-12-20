@@ -7,5 +7,11 @@
 </head>
 <body>
 <h1>Guru</h1>
+<?php
+foreach ($siswa as $datasiswa){
+    echo $datasiswa->nis;
+}
+?>
+
 </body>
 </html>
