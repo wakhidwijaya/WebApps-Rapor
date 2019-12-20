@@ -37,7 +37,9 @@ class C_Login extends CI_Controller {
             if ($cek_login > 0){
                 $data_login = $this->M_Login->cek_login("tb_user", $where)->row_array();
                 if ($data_login['status'] == 1){
+                    $siswa = $this->M_Login->siswa($data_login['username']);
                     $data_session = array(
+                        'nama' => $siswa['nama'],
                         'username' => $data_login['username'],
                         'status' => $data_login['status']
                     );
@@ -45,9 +47,9 @@ class C_Login extends CI_Controller {
                     redirect(base_url("siswa"));
                 }
                 else{
+                    $guru = $this->M_Login->guru($data_login['username']);
                     $data_session = array(
-    //					'id' => $guru[nip],
-    //					'nama' => $guru[nama],
+    					'nama' => $guru['nama'],
                         'username' => $data_login['username'],
                         'status' => $data_login['status']
                     );
