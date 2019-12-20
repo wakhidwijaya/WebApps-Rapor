@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -58,10 +58,15 @@ $route['login'] = 'C_Login/login';
 $route['logout'] = 'C_Login/logout';
 
 //GURU
+<<<<<<< HEAD
 $route['guru'] ='guru/C_Guru/index';
 $route['guru/jadwal'] ='guru/C_Guru/jadwal';
 $route['guru/nilai'] ='guru/C_Guru/nilai';
 $route['guru/wali'] ='guru/C_Guru/wali';
+=======
+$route['guru'] = 'guru/C_Guru/index';
+>>>>>>> 4afef1ace79f3ba5603c6e9d8e25d7ac0a98be8b
 
 //SISWA
-$route['siswa'] ='siswa/C_Siswa/index';
+$route['siswa'] = 'siswa/C_Siswa/index';
+$route['siswa/daftar'] = 'siswa/C_Siswa/siswa';
