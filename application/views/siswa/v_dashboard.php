@@ -9,7 +9,7 @@
 <h1>Siswa Kelas</h1>
 <?php
     foreach ($nilai as $datanilai){
-        echo $datanilai->id_nilai;
+        echo $datanilai->nis;
     }
 ?>
 </body>

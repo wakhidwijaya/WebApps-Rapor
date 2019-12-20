@@ -38,8 +38,7 @@ class C_Login extends CI_Controller {
                 $data_login = $this->M_Login->cek_login("tb_user", $where)->row_array();
                 if ($data_login['status'] == 1){
                     $data_session = array(
-    //					'id' => $guru[nip],
-    //					'nama' => $guru[nama],
+                        'username' => $data_login['username'],
                         'status' => $data_login['status']
                     );
                     $this->session->set_userdata($data_session);
@@ -49,6 +48,7 @@ class C_Login extends CI_Controller {
                     $data_session = array(
     //					'id' => $guru[nip],
     //					'nama' => $guru[nama],
+                        'username' => $data_login['username'],
                         'status' => $data_login['status']
                     );
                     $this->session->set_userdata($data_session);

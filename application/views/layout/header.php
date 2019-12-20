@@ -29,7 +29,7 @@
 			<span class="logo-lg"><img style="padding-top: 7px; max-height: 40px" src="<?php echo base_url('assets/img/logo_1.png'); ?>"></span>
 		</a>
 
-		<nav class="navbar navbar-static-top" role="navigation">
+		<nav class="navbar navbar-static-top " role="navigation">
 			<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
 				<span class="sr-only">Toggle navigation</span>
 			</a>
