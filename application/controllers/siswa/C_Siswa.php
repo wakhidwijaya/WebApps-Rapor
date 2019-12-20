@@ -15,7 +15,10 @@ class C_Siswa extends CI_Controller
     public function index()
     {
         $data['nilai'] = $this->M_Siswa->nilai();
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
         $this->load->view('siswa/v_dashboard', $data);
+        $this->load->view('layout/footer');
     }
 
     public function siswa()

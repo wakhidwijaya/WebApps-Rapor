@@ -23,11 +23,11 @@ class C_Guru extends CI_Controller
         $this->load->view('guru/v_dashboard', $data);
         $this->load->view('layout/footer');
     }
-    public function nilai(){
+    public function nilai()
+    {
         $id_guru =  $this->session->userdata('username');
         $data['nilai'] = $this->M_Guru->nilai($id_guru);
         print_r($data);
         $this->load->view('guru/v_nilai', $data);
-
     }
 }
