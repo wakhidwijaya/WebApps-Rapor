@@ -2,13 +2,21 @@
 
 class M_Guru extends CI_Model
 {
-
-    function siswa($where){
-        $this->db->select('ts.*', 'tk.kelas');
-        $this->db->from('tb_siswa ts');
-        $this->db->join('tb_kelas tk', 'ts.kelas = tk.id_kelas');
-        $this->db->join('tb_guru tg', 'ts.wali_kelas = tg.id_guru');
+    function datadiri($where){
+        $this->db->select('*');
+        $this->db->from('tb_guru tg');
+        $this->db->join('tb_mapel tm', 'tg.id_mapel = tm.id_mapel');
         $this->db->where('tg.nip', $where);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    function nilai($where){
+        $this->db->select('tn.nilai, tm.mapel, ts.nama');
+        $this->db->from('tb_nilai tn');
+        $this->db->from('tb_guru tg');
+        $this->db->where('tg.nip', $where);
+        $this->db->join('tb_siswa ts', 'tn.id_siswa = ts.nis');
+        $this->db->join('tb_mapel tm', 'tn.id_mapel = tm.id_mapel');
         $query = $this -> db -> get();
         return $query->result_array();
     }

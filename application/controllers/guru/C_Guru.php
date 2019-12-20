@@ -14,12 +14,19 @@ class C_Guru extends CI_Controller {
 
 	public function index()
 	{
-        $where =  $this->session->userdata('username');
-        $data['siswa'] = $this->M_Guru->siswa($where);
+        $id_guru =  $this->session->userdata('username');
+        $data['datadiri'] = $this->M_Guru->datadiri($id_guru);
 //        $this->load->view('layout/header');
 //        $this->load->view('layout/sidebar');
         $this->load->view('guru/v_dashboard', $data);
 //        $this->load->view('layout/footer');
+
+    }
+    public function nilai(){
+        $id_guru =  $this->session->userdata('username');
+        $data['nilai'] = $this->M_Guru->nilai($id_guru);
+        print_r($data);
+        $this->load->view('guru/v_nilai', $data);
 
     }
 }
