@@ -14,16 +14,8 @@ class C_Guru extends CI_Controller {
 
 	public function index()
 	{
-        $where = array(
-            'nip' => $this->session->userdata('username')
-        );
-        $data['guru'] = $this->M_Guru->guru("tb_guru", $where);
-        print_r($data['guru']);
-        $where_siswa = array(
-          'wali_murid' => 1
-        );
-        $data['siswa'] = $this->M_Guru->siswa("tb_siswa", $where_siswa);
-
+        $where =  $this->session->userdata('username');
+        $data['siswa'] = $this->M_Guru->siswa($where);
 //        $this->load->view('layout/header');
 //        $this->load->view('layout/sidebar');
         $this->load->view('guru/v_dashboard', $data);
