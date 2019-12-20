@@ -13,13 +13,15 @@
     <body>
         <div class="container">
             <div class="row">
-                <h1>HELLO</h1>
-                <form method="post" action="<?php echo base_url("login") ?>">
-                    <label>Username</label>
-                    <input name="username" type="text" required>
-                    <input name="password" type="password" required>
-                    <input type="submit">
-                </form>
+                <div class="col-md-6 offsets-3">
+                    <h1>HELLO</h1>
+                    <form method="post" action="<?php echo base_url("login") ?>">
+                        <label>Username</label>
+                        <input name="username" type="text" required>
+                        <input name="password" type="password" required>
+                        <input type="submit">
+                    </form>
+                </div>
             </div>
         </div>
 
