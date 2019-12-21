@@ -8,17 +8,17 @@ class M_Login extends CI_Model
 	}
 	function guru($where){
         $this->db->select('*');
-        $this->db->from('tb_guru');
-        $this->db->where('nip',$where);
+        $this->db->from('tb_guru tg');
+        $this->db->where('tg.nip',$where);
         $query = $this->db->get();
-        return $query->result_array();
+        return $query->row_array();
     }
-    function siswa(){
+    function siswa($where){
         $this->db->select('*');
-        $this->db->from('tb_siswa');
-        $this->db->where('nis',$where);
+        $this->db->from('tb_siswa ts');
+        $this->db->where('ts.nis',$where);
         $query = $this->db->get();
-        return $query->result_array();
+        return $query->row_array();
     }
 
 }
