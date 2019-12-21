@@ -14,17 +14,18 @@ class C_Siswa extends CI_Controller
     }
     public function index()
     {
-        $data['nilai'] = $this->M_Siswa->nilai();
+        $id_siswa =  $this->session->userdata('username');
+        $data['siswa'] = $this->M_Siswa->get_siswa($id_siswa);
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('siswa/v_dashboard', $data);
         $this->load->view('layout/footer');
     }
 
-    public function siswa()
-    {
-        // $where = 1;
-        $data['siswa'] = $this->M_Siswa->get_siswa();
-        $this->load->view('siswa/v_dSiswa', $data);
-    }
+    // public function siswa()
+    // {
+    //     $data['siswa'] = $this->M_Siswa->get_siswa($id_siswa);
+    //     print_r($data);
+    //     $this->load->view('siswa/v_dSiswa', $data);
+    // }
 }
