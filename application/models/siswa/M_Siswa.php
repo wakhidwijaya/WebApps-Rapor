@@ -8,9 +8,12 @@ class M_Siswa extends CI_Model
             ->result();
     }
 
-    public function get_siswa()
+    public function get_siswa($id)
     {
-        $query = $this->db->query('SELECT * FROM tb_siswa where kelas=1');
+        $this->db->select('*');
+        $this->db->from('tb_siswa ts');
+        $this->db->where('ts.nis', $id);
+        $query = $this->db->get();
         return $query->result_array();
     }
 }
