@@ -17,9 +17,11 @@
             <td>No</td>
             </th>
         </table>
-        <?php foreach ($nilai as $data_nilai) {
-
-        } ?>
+        <?php
+        foreach ($nilai as $data_nilai) {
+            echo $data_nilai['semester'];
+        }
+        ?>
     </div>
 </div>
 </body>

@@ -27,7 +27,6 @@ class C_Guru extends CI_Controller
     {
         $id_guru =  $this->session->userdata('username');
         $data['nilai'] = $this->M_Guru->nilai($id_guru);
-        print_r($data);
         $this->load->view('guru/v_nilai', $data);
     }
 }
