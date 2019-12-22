@@ -1,3 +1,4 @@
+
 //DATA TABLES FOR EDIT
 	$(document).ready(function(){
 		$('#table-a').DataTable({
