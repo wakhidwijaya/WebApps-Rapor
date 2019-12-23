@@ -60,7 +60,9 @@ $route['logout'] = 'C_Login/logout';
 //GURU
 $route['guru'] ='guru/C_Guru/index';
 $route['guru/jadwal'] ='guru/C_Guru/jadwal';
-$route['guru/nilai'] ='guru/C_Guru/nilai';
+$route['guru/rombel'] ='guru/C_Guru/rombel';
+$route['guru/rombel/nilai/(:num)'] ='guru/C_Guru/kd/$1';
+$route['guru/rombel/nilai/(:num)/(:num)'] ='guru/C_Guru/nilai/$1/$2';
 $route['guru/wali'] ='guru/C_Guru/wali';
 
 //SISWA

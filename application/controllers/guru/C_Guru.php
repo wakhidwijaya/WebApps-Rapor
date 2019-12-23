@@ -23,13 +23,27 @@ class C_Guru extends CI_Controller
         $this->load->view('guru/v_dashboard', $data);
         $this->load->view('layout/footer');
     }
-    public function nilai()
-    {
+
+    public function rombel(){
         $id_guru =  $this->session->userdata('username');
-        $data['nilai'] = $this->M_Guru->nilai($id_guru);
+        $data['rombel'] = $this->M_Guru->rombel($id_guru);
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('guru/v_rombel', $data);
+        $this->load->view('layout/footer');
+    }
+    public function kd($id)
+    {
+        $data['kd'] = $this->M_Guru->kd($id);
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('guru/v_nilai', $data);
         $this->load->view('layout/footer');
+    }
+    public function nilai($kd, $kelas){
+        $data['nilai'] = $this->M_Guru->nilai($kd, $kelas);
+        $this->load->view('guru/v_nilai', $data, true);
+
+
     }
 }

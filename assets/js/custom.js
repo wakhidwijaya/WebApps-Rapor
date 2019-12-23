@@ -1,3 +1,24 @@
+$(document).ready(function() {
+	$('#lihatnilai').on('click',function(){
+		var id=$(this).attr('data');
+		$.ajax({
+			type : "GET",
+			url  : "<?php echo base_url('index.php/barang/get_barang')?>",
+			dataType : "JSON",
+			data : {id:id},
+			success: function(data){
+				$.each(data,function(barang_kode, barang_nama, barang_harga){
+					$('#nilai').modal('show');
+					$('[name="kobar_edit"]').val(data.barang_kode);
+					$('[name="nabar_edit"]').val(data.barang_nama);
+					$('[name="harga_edit"]').val(data.barang_harga);
+				});
+			}
+		});
+		return false;
+	});
+
+};
 
 //DATA TABLES FOR EDIT
 	$(document).ready(function(){
