@@ -13,7 +13,7 @@
                        <ul class="list-group">
                            <?php foreach ($kd as $data_kd) {?>
                                <li class="list-group-item">
-                                   <a id="lihatnilai" href="#">
+                                   <a id="lihatnilai" href="javacript:void(0);" data-kd ="<?php echo $data_kd['id_kd']?>" data-kelas="<?php echo $data_kd['id_kelas']?>">
                                        <i class="fa fa-chevron-right"> </i> <?php echo $data_kd['kd']?>
                                    </a>
                                </li>
