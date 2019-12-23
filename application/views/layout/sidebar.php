@@ -88,49 +88,26 @@
   </div>
 </aside>
 
-<<<<<<< HEAD <div class="content-wrapper">
+<div class="content-wrapper">
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark">Dashboard
             <?php if ($this->session->userdata('status') == 2) {
-              echo "<small>Guru</small>";
+              echo "Guru";
             } else {
-              echo "<small>Siswa</small>";
+              echo "Siswa";
             } ?>
           </h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?php echo base_url() ?>">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url($this->uri->segment(1)) ?>">Home</a></li>
+            <li class="breadcrumb-item active"><?php echo $this->uri->segment(2) ?></li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-
-  <div class="content-wrapper">
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard
-              <?php if ($this->session->userdata('status') == 2) {
-                echo "<small>Guru</small>";
-              } else {
-                echo "<small>Siswa</small>";
-              } ?>
-            </h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url($this->uri->segment(1)) ?>">Home</a></li>
-              <li class="breadcrumb-item active"><?php echo $this->uri->segment(2) ?></li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+        </div>
+      </div>
     </div>
-    >>>>>>> 9077b9481e6c83303a70ca12862cd0dd07910607
+  </div>
+  <br>
