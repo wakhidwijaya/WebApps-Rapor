@@ -1,26 +1,34 @@
-$(document).ready(function() {
-	$('#lihatnilai').onclick(function(){
-		var kd=$(this).attr('data');
-		var kelas=$(this).attr('data');
+$(document).ready(function () {
+	$('#lihatnilai').click(function (ev) {
+		ev.preventDefault();
+
+		var kd = $(this).attr('data-kd');
+		var kelas = $(this).attr('data-kelas');
+		console.log(kd, kelas);
 		$.ajax({
-			type : "GET",
-			url  : "<?php echo base_url('guru/rombel/nilai')?>",
-			dataType : "JSON",
-			data : {kd:kd, kelas:kelas},
-			success: function(data){
-				$('#nilai').show();
-				// $.each(data,function(barang_kode, barang_nama, barang_harga){
-				// 	$('#nilai').('show');
-				// 	$('[name="kobar_edit"]').val(data.barang_kode);
-				// 	$('[name="nabar_edit"]').val(data.barang_nama);
-				// 	$('[name="harga_edit"]').val(data.barang_harga);
-				// });
+			type: "GET",
+			url: `${urllihatnilai}/${kd}/${kelas}`, // echo php raiso neng file js
+			dataType: "JSON",
+			// data: {
+			// 	kd: kd,
+			// 	kelas: kelas
+			// },
+			success: function (data) {
+				$('#nilai').removeClass('d-none');
+				$.each(data, function (idx, val) {
+					console.log(val);
+					// $('#nilai').('show');
+					// $('[name="kobar_edit"]').val(data.barang_kode);
+					// $('[name="nabar_edit"]').val(data.barang_nama);
+					// $('[name="harga_edit"]').val(data.barang_harga);
+					$('#table-nilai').append(val.nama + " " + val.nilai + "<br>");
+				});
 			}
-	});
+		});
 		return false;
 	});
 
-};
+});
 
 // //DATA TABLES FOR EDIT
 // 	$(document).ready(function(){
@@ -94,4 +102,3 @@ $(document).ready(function() {
 // 	 }
 //
 //
-

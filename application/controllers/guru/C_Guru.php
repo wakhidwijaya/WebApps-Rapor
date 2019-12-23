@@ -24,7 +24,8 @@ class C_Guru extends CI_Controller
         $this->load->view('layout/footer');
     }
 
-    public function rombel(){
+    public function rombel()
+    {
         $id_guru =  $this->session->userdata('username');
         $data['rombel'] = $this->M_Guru->rombel($id_guru);
         $this->load->view('layout/header');
@@ -40,10 +41,9 @@ class C_Guru extends CI_Controller
         $this->load->view('guru/v_nilai', $data);
         $this->load->view('layout/footer');
     }
-    public function nilai($kd, $kelas){
+    public function nilai($kd, $kelas)
+    {
         $data['nilai'] = $this->M_Guru->nilai($kd, $kelas);
-        $this->load->view('guru/v_nilai', $data, true);
-
-
+        echo json_encode($data['nilai']);
     }
 }
