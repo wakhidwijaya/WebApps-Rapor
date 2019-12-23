@@ -38,5 +38,26 @@ class M_Guru extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    function datasiswa($where){
+        $this->db->select('*');
+        $this->db->from('tb_siswa ts');
+        $this->db->where('ts.kelas', $where);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    function kd_last(){
+        $this->db->select('tm.id_kd');
+        $this->db->from('tb_materi tm');
+        $this->db->order_by('tm.id_kd', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function input_kd($table,$data){
+        $this->db->insert($table,$data);
+    }
+    function input_nilai($table,$data){
+        $this->db->insert($table,$data);
+    }
 }
 

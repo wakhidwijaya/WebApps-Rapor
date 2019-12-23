@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$('#lihatnilai').click(function (ev) {
+	$('.lihatnilai').click(function (ev) {
 		ev.preventDefault();
 
 		var kd = $(this).attr('data-kd');
@@ -9,20 +9,18 @@ $(document).ready(function () {
 			type: "GET",
 			url: `${urllihatnilai}/${kd}/${kelas}`, // echo php raiso neng file js
 			dataType: "JSON",
-			// data: {
-			// 	kd: kd,
-			// 	kelas: kelas
-			// },
-			success: function (data) {
-				$('#nilai').removeClass('d-none');
-				$.each(data, function (idx, val) {
-					console.log(val);
-					// $('#nilai').('show');
-					// $('[name="kobar_edit"]').val(data.barang_kode);
-					// $('[name="nabar_edit"]').val(data.barang_nama);
-					// $('[name="harga_edit"]').val(data.barang_harga);
-					$('#table-nilai').append(val.nama + " " + val.nilai + "<br>");
-				});
+			success : function(data){
+				$('.nilai').removeClass('d-none');
+				var html = '';
+				var i;
+				for(i=0; i<data.length; i++){
+					html += '<tr>'+
+						'<td>'+data[i].nis+'</td>'+
+						'<td>'+data[i].nama+'</td>'+
+						'<td>'+data[i].nilai+'</td>'+
+						'</tr>';
+				}
+				$('.datanilai').html(html);
 			}
 		});
 		return false;
