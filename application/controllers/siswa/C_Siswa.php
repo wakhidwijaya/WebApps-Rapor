@@ -32,9 +32,11 @@ class C_Siswa extends CI_Controller
         $this->load->view('layout/footer');
     }
 
-    // function edit($id)
-    // {
-    //     $id_siswa =  $this->session->userdata('username');
-    //     $data['nilai'] = $this->M_Siswa->nilai($id_siswa);
-    // }
+    public function edit($id)
+    {
+        $data["siswa"] = $siswa->getById($id);
+        if (!$data["siswa"]) show_404();
+
+        $this->load->view("siswa/v_dashboard", $data);
+    }
 }

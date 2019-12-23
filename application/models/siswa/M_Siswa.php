@@ -2,6 +2,13 @@
 
 class M_Siswa extends CI_Model
 {
+    private $_table = "tb_siswa";
+
+    public $nis;
+    public $nama;
+    public $kelas;
+    public $alamat;
+
     public function nilai($id)
     {
         $query = $this->db->query('SELECT ts.nama as nama, ts.nis,  tk.kelas, tn.semester, tm.mapel, tmt.kd , tn.nilai
@@ -24,14 +31,13 @@ class M_Siswa extends CI_Model
         return $query->result_array();
     }
 
-    // function edit_data($id)
-    // {
-    //     $data = array(
-    //         'alamat'          => $this->input->post('alamat', TRUE),
-    //     );
-
-    //     $nis   = $this->input->post('nis');
-    //     $this->db->where('nis', $nis);
-    //     $this->db->update($this->tb_siswa, $data);
-    // }
+    public function update()
+    {
+        $post = $this->input->post();
+        $this->nis = $post["nis"];
+        $this->nama = $post["nama"];
+        $this->kelas = $post["kelas"];
+        $this->alamat = $post["alamat"];
+        $this->db->update($this->_table, $this, array('nis' => $post['nis']));
+    }
 }
