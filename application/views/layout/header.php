@@ -24,8 +24,7 @@
       -ms-user-select: none;
     }
   </style>
-  <script src="<?php echo base_url() ?>assets/Chart.js-2.9.3/dist/Chart.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/Chart.js-2.9.3/samples/utils.js"></script>
+  <script src="<?php echo base_url() ?>assets/js/Chart.bundle.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed text-sm">

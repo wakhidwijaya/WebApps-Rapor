@@ -22,10 +22,19 @@ class C_Siswa extends CI_Controller
         $this->load->view('layout/footer');
     }
 
-    // public function siswa()
+    public function nilai()
+    {
+        $id_siswa =  $this->session->userdata('username');
+        $data['nilai'] = $this->M_Siswa->nilai($id_siswa);
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('siswa/v_nilai', $data);
+        $this->load->view('layout/footer');
+    }
+
+    // function edit($id)
     // {
-    //     $data['siswa'] = $this->M_Siswa->get_siswa($id_siswa);
-    //     print_r($data);
-    //     $this->load->view('siswa/v_dSiswa', $data);
+    //     $id_siswa =  $this->session->userdata('username');
+    //     $data['nilai'] = $this->M_Siswa->nilai($id_siswa);
     // }
 }

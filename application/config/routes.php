@@ -58,11 +58,13 @@ $route['login'] = 'C_Login/login';
 $route['logout'] = 'C_Login/logout';
 
 //GURU
-$route['guru'] ='guru/C_Guru/index';
-$route['guru/jadwal'] ='guru/C_Guru/jadwal';
-$route['guru/nilai'] ='guru/C_Guru/nilai';
-$route['guru/wali'] ='guru/C_Guru/wali';
+$route['guru'] = 'guru/C_Guru/index';
+$route['guru/jadwal'] = 'guru/C_Guru/jadwal';
+$route['guru/nilai'] = 'guru/C_Guru/nilai';
+$route['guru/wali'] = 'guru/C_Guru/wali';
 
 //SISWA
 $route['siswa'] = 'siswa/C_Siswa/index';
-$route['siswa/daftar'] = 'siswa/C_Siswa/siswa';
+// $route['siswa/daftar'] = 'siswa/C_Siswa/siswa';
+$route['siswa/nilai'] = 'siswa/C_Siswa/nilai';
+$route['siswa/edit/$id'] = 'siswa/C_Siswa/edit/$id';
