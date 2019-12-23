@@ -1,50 +1,44 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-           <div class="col-12">
+           <div class="col-4">
                <div class="card bg-light">
                    <div class="card-header">
-                       <span class="h5 font-weight-bold">Daftar Nilai</span>
-                       <a href="#" class="float-right btn btn-sm btn-info" data-toggle="modal" data-target="#addnilai">
+                       <span class="h5 font-weight-bold">Kompetensi Dasar</span>
+                       <a href="#" class="float-right btn btn-sm btn-info" data-toggle="modal" data-target="#add_kd">
                            <i class="fas fa-plus"></i>
                        </a>
-
                    </div>
                    <div class="card-body">
-                       <table class="table">
-                           <thead>
-                               <tr>
-                                   <td>No</td>
-                                   <td>Nis</td>
-                                   <td>Nama</td>
-                                   <td>Kelas</td>
-                                   <td>Semester</td>
-                                   <td>Nilai</td>
-                                   <td>Aksi</td>
-                               </tr>
-                           </thead>
-                           <tbody>
-                           <?php $no = 1; foreach ($nilai as $datanilai) { ?>
-                               <tr>
-                                   <td><?php echo $no?></td>
-                                   <td><?php echo $datanilai['nis']?></td>
-                                   <td><?php echo $datanilai['nama']?></td>
-                                   <td><?php echo $datanilai['kelas']?></td>
-                                   <td><?php echo $datanilai['semester']?></td>
-                                   <td><?php echo $datanilai['nilai']?></td>
-                                   <td>
-                                       <a href="#" class="buttons">edit</a>
-                                   </td>
-                               </tr>
-                           <?php $no++; } ?>
-                           </tbody>
-                       </table>
+                       <ul class="list-group">
+                           <?php foreach ($kd as $data_kd) {?>
+                               <li class="list-group-item">
+                                   <a id="lihatnilai" href="javacript:void(0);" data-kd ="<?php echo $data_kd['id_kd']?>" data-kelas="<?php echo $data_kd['id_kelas']?>">
+                                       <i class="fa fa-chevron-right"> </i> <?php echo $data_kd['kd']?>
+                                   </a>
+                               </li>
+                           <?php }?>
+                       </ul>
                    </div>
                </div>
            </div>
+            <div id="nilai" class="col-8 d-none">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <span class="h5 font-weight-bold">Input Nilai</span>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td>as</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="modal fade" id="addnilai" tabindex="-1" role="dialog" aria-labelledby="addnilai"
+    <div class="modal fade" id="add_kd" tabindex="-1" role="dialog" aria-labelledby="addnilai"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
