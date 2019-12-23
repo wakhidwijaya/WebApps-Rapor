@@ -13,7 +13,7 @@
                         <ul class="list-group">
                             <?php foreach ($kd as $data_kd) { ?>
                                 <li class="list-group-item">
-                                    <a id="lihatnilai" href="#" data-kd="<?php echo $data_kd['id_kd'] ?>" data-kelas="<?php echo $data_kd['id_kelas'] ?>">
+                                    <a class="lihatnilai" href="#" data-kd="<?php echo $data_kd['id_kd'] ?>" data-kelas="<?php echo $data_kd['id_kelas'] ?>">
                                         <i class="fa fa-chevron-right"> </i> <?php echo $data_kd['kd'] ?>
                                     </a>
                                 </li>
@@ -22,16 +22,15 @@
                     </div>
                 </div>
             </div>
-            <div id="nilai" class="col-8 d-none">
+            <div class="nilai col-8 d-none">
                 <div class="card bg-light">
                     <div class="card-header">
                         <span class="h5 font-weight-bold">Input Nilai</span>
                     </div>
-                    <div>
-                        <table id="table-nilai">
-                            <!-- <tr>
-                                <td>as</td>
-                            </!--> -->
+                    <div class="card-body">
+                        <table class="table table-condensed table-bordered table-hover">
+                            <tbody class="datanilai">
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -42,12 +41,25 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h4 class="modal-title font-weight-bold">Tambah Nilai</h4>
+                    <h4 class="modal-title font-weight-bold">Tambah KD</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body mx-3">
+                    <form method="post" action="<?php echo base_url('guru/rombel/addkd')?>">
+                        <input name="nip" type="hidden" class="form-control" value="<?php echo $data_kd['nip'] ?>" >
+                        <input name="kelas" type="hidden" class="form-control" value="<?php echo $data_kd['id_kelas'] ?>" >
+                        <input name="id_kd" type="hidden" class="form-control" value="<?php echo $data_kd['id_kd'] ?>" >
+                        <div class="form-group row">
+                            <label class="form-label col-md-2">KD</label>
+                            <input name="kd" type="text" class="form-control">
+                        </div>
+                        <input name="status" type="hidden" class="form-control" value="<?php echo $data_kd['status'] ?>" >
+                        <div class="form-group row float-right">
+                            <input type="submit" class="btn btn-sm bg-info text-white" value="Simpan">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
