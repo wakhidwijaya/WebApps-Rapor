@@ -31,13 +31,16 @@ class M_Siswa extends CI_Model
         return $query->result_array();
     }
 
-    public function update()
+    public function getEdit($field, $value)
     {
-        $post = $this->input->post();
-        $this->nis = $post["nis"];
-        $this->nama = $post["nama"];
-        $this->kelas = $post["kelas"];
-        $this->alamat = $post["alamat"];
-        $this->db->update($this->_table, $this, array('nis' => $post['nis']));
+        $this->db->where($field, $value);
+        return $this->db->get('tb_siswa');
+    }
+
+    public function update($post)
+    {
+        $this->db->where('id_siswa', $id);
+        $this->db->update('tb_siswa', $post);
+        return $this->db->affected_rows();
     }
 }

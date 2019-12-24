@@ -34,9 +34,25 @@ class C_Siswa extends CI_Controller
 
     public function edit($id)
     {
-        $data["siswa"] = $siswa->getById($id);
-        if (!$data["siswa"]) show_404();
+        // $id_siswa =  $this->session->userdata('username');
+        $query = $this->M_Siswa->edit('id', $id);
+        $data['siswa'] = $query->row_array();
 
-        $this->load->view("siswa/v_dashboard", $data);
+        if ($this->input->post()) {
+            $post['alamat'] = $this->input->post('alamat');
+
+            $id = $this->M_Siswa->update($id, $post);
+
+            if ($id) {
+                echo "update success";
+            } else {
+                echo " update gagal";
+            }
+        }
+
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('siswa/v_nilai', $data);
+        $this->load->view('layout/footer');
     }
 }

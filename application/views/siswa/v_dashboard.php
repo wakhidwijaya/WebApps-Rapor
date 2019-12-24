@@ -45,7 +45,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post">
+                                <form action="<?php echo base_url('siswa/edit') ?>" method="post">
                                     <div class="form-group row">
                                         <label class="form-label col-md-2">NIS</label>
                                         <input type="text" class="form-control" value="<?php echo $data_siswa['nis'] ?>" disabled>
