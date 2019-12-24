@@ -13,7 +13,7 @@
                         <ul class="list-group">
                             <?php foreach ($kd as $data_kd) { ?>
                                 <li class="list-group-item">
-                                    <a class="lihatnilai" href="#" data-kd="<?php echo $data_kd['id_kd'] ?>" data-kelas="<?php echo $data_kd['id_kelas'] ?>">
+                                    <a class="lihatnilai" href="#" data-namakd="<?php echo $data_kd['kd']?>" data-kd="<?php echo $data_kd['id_kd'] ?>" data-kelas="<?php echo $data_kd['id_kelas'] ?>">
                                         <i class="fa fa-chevron-right"> </i> <?php echo $data_kd['kd'] ?>
                                     </a>
                                 </li>
@@ -25,13 +25,22 @@
             <div class="nilai col-8 d-none">
                 <div class="card bg-light">
                     <div class="card-header">
-                        <span class="h5 font-weight-bold">Input Nilai</span>
+                        <span class="h5 font-weight-bold">Input Nilai - <small id="kd" class="d-none"></small></span>
                     </div>
                     <div class="card-body">
                         <table class="table table-condensed table-bordered table-hover">
+                                <tr>
+                                    <th>NIS</th>
+                                    <th>NAMA</th>
+                                    <th>NILAI</th>
+                                </tr>
+                            </thead>
                             <tbody class="datanilai">
                             </tbody>
                         </table>
+                        <div class="mt-2 float-right">
+                            <input type="submit" class="btn btn-sm bg-info text-white" value="Simpan">
+                        </div>
                     </div>
                 </div>
             </div>
