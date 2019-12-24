@@ -3,6 +3,7 @@ $(document).ready(function () {
 		ev.preventDefault();
 
 		var kd = $(this).attr('data-kd');
+		var datakd = $(this).attr('data-namakd');
 		var kelas = $(this).attr('data-kelas');
 		console.log(kd, kelas);
 		$.ajax({
@@ -10,6 +11,8 @@ $(document).ready(function () {
 			url: `${urllihatnilai}/${kd}/${kelas}`, // echo php raiso neng file js
 			dataType: "JSON",
 			success : function(data){
+				$('#kd').removeClass('d-none');
+				$('#kd').html(datakd);
 				$('.nilai').removeClass('d-none');
 				var html = '';
 				var i;
@@ -17,7 +20,7 @@ $(document).ready(function () {
 					html += '<tr>'+
 						'<td>'+data[i].nis+'</td>'+
 						'<td>'+data[i].nama+'</td>'+
-						'<td>'+data[i].nilai+'</td>'+
+						'<td width="12%"><input style="width: 100%" type="number" value="'+data[i].nilai+'"></td>'+
 						'</tr>';
 				}
 				$('.datanilai').html(html);
