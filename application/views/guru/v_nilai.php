@@ -16,6 +16,9 @@
                                     <a class="lihatnilai" href="#" data-namakd="<?php echo $data_kd['kd']?>" data-kd="<?php echo $data_kd['id_kd'] ?>" data-kelas="<?php echo $data_kd['id_kelas'] ?>">
                                         <i class="fa fa-chevron-right"> </i> <?php echo $data_kd['kd'] ?>
                                     </a>
+                                    <?php if ($data_kd['status'] == 0){
+                                        echo '<a href="'.base_url('guru/rombel/hapuskd/').$data_kd['id_kd'].'/'.$data_kd['id_kelas'].'" class="float-right text-danger"><i class="far fa-times-circle"></i></a>';
+                                    } ?>
                                 </li>
                             <?php } ?>
                         </ul>
@@ -57,14 +60,20 @@
                 </div>
                 <div class="modal-body mx-3">
                     <form method="post" action="<?php echo base_url('guru/rombel/addkd')?>">
+                        <div class="form-group row">
+                            <select id="dropdown_kd" name="status" class="form-control">
+                                <option value="" disabled selected>Pilih KD</option>
+                                <option value="0">Kompetensi Dasar</option>
+                                <option value="1">Ujian Tengah Semester</option>
+                                <option value="2">Ujian Akhir Semester</option>
+                            </select>
+                        </div>
                         <input name="nip" type="hidden" class="form-control" value="<?php echo $data_kd['nip'] ?>" >
                         <input name="kelas" type="hidden" class="form-control" value="<?php echo $data_kd['id_kelas'] ?>" >
                         <input name="id_kd" type="hidden" class="form-control" value="<?php echo $data_kd['id_kd'] ?>" >
                         <div class="form-group row">
-                            <label class="form-label col-md-2">KD</label>
-                            <input name="kd" type="text" class="form-control">
+                            <input id="input_kd" name="kd" type="text" class="form-control" placeholder="Keterangan KD">
                         </div>
-                        <input name="status" type="hidden" class="form-control" value="<?php echo $data_kd['status'] ?>" >
                         <div class="form-group row float-right">
                             <input type="submit" class="btn btn-sm bg-info text-white" value="Simpan">
                         </div>

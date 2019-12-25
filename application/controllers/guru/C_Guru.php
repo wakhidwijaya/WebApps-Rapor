@@ -42,27 +42,42 @@ class C_Guru extends CI_Controller
         $this->load->view('layout/footer');
     }
     public function add_kd(){
-        $datakd = array(
-            'nip' => $this -> input -> post('nip'),
-            'id_kelas' => $this -> input -> post('kelas'),
-            'kd' => $this -> input -> post('kd'),
-            'status' => $this -> input -> post('status')
-        );
-        $this->M_Guru->input_kd('tb_materi', $datakd);
+        $status = $this -> input -> post('status');
+        $kelas = $this -> input -> post('kelas');
+        if ($status != 0){
+            $cek_data = $this->M_Guru->lihatstatus($status, $kelas);
+            if (count($cek_data) > 0){
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+            else{
+                $datakd = array(
+                    'nip' => $this -> input -> post('nip'),
+                    'id_kelas' => $this -> input -> post('kelas'),
+                    'kd' => $this -> input -> post('kd'),
+                    'status' => $this -> input -> post('status')
+                );
+                $this->M_Guru->input_kd('tb_materi', $datakd);
 
-        $data = $this->M_Guru->datasiswa($this -> input -> post('kelas'));
+                $data = $this->M_Guru->datasiswa($this -> input -> post('kelas'));
 
-        foreach ($data as $siswa){
-            $data_kd = $this->M_Guru->kd_last();
-            $datasiswa = array(
-                'id_siswa' => $siswa['nis'],
-                'nilai' => 0,
-                'semester' => 1,
-                'id_kd' => $data_kd[0]->id_kd
-            );
-            $this->M_Guru->input_nilai('tb_nilai', $datasiswa);
+                foreach ($data as $siswa){
+                    $data_kd = $this->M_Guru->kd_last();
+                    $datasiswa = array(
+                        'id_siswa' => $siswa['nis'],
+                        'nilai' => 0,
+                        'semester' => 1,
+                        'id_kd' => $data_kd[0]->id_kd
+                    );
+                    $this->M_Guru->input_nilai('tb_nilai', $datasiswa);
+                }
+                redirect(base_url('guru/rombel/nilai/'.$this->input->post('kelas')));
+            }
         }
-        redirect(base_url('guru/rombel/nilai/'.$this->input->post('kelas')));
+    }
+    public function delete_kd($id_kd, $id_kelas){
+        $this->M_Guru->hapus_siswa($id_kd);
+        $this->M_Guru->hapus_kd($id_kd);
+        redirect(base_url('guru/rombel/nilai/'.$id_kelas));
     }
     public function nilai($kd, $kelas)
     {
