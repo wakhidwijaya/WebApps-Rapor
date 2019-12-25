@@ -36,7 +36,7 @@ class C_Siswa extends CI_Controller
     {
         // $id_siswa =  $this->session->userdata('username');
         $query = $this->M_Siswa->edit('id', $id);
-        $data['siswa'] = $query->row_array();
+        $data['siswa'] = $query->result_array();
 
         if ($this->input->post()) {
             $post['alamat'] = $this->input->post('alamat');
