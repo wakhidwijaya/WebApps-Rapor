@@ -31,6 +31,18 @@ $(document).ready(function () {
 
 });
 
+$('#dropdown_kd').change(function(){
+	if( $(this).val() == '1'){
+		$('#input_kd').val('Ujian Tengah Semester');
+		$('#input_kd').hide();
+	}else if ( $(this).val() == '2'){
+		$('#input_kd').val('Ujian Akhir Semester');
+		$('#input_kd').hide();
+	}else{
+		$('#input_kd').val('');
+		$('#input_kd').show();
+	}
+});
 // //DATA TABLES FOR EDIT
 // 	$(document).ready(function(){
 // 		$('#table-a').DataTable({

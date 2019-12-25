@@ -26,6 +26,7 @@ class M_Guru extends CI_Model
         $this->db->select('*');
         $this->db->from('tb_materi');
         $this->db->where('tb_materi.id_kelas', $where);
+        $this->db->order_by('status', 'ASC');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -50,6 +51,22 @@ class M_Guru extends CI_Model
         $this->db->from('tb_materi tm');
         $this->db->order_by('tm.id_kd', 'DESC');
         $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function hapus_kd($id){
+        $this->db->where('id_kd', $id);
+        $this->db->delete('tb_materi');
+    }
+    function hapus_siswa($id){
+        $this->db->where('id_kd', $id);
+        $this->db->delete('tb_nilai');
+    }
+    function lihatstatus($status, $kelas){
+        $this->db->select('*');
+        $this->db->from('tb_materi');
+        $this->db->where('id_kelas', $kelas);
+        $this->db->where('status', $status);
         $query = $this->db->get();
         return $query->result();
     }

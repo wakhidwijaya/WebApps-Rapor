@@ -20,7 +20,7 @@
                                 } ?>">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="<?php echo base_url() ?>" class="nav-link">
+          <a href="<?php echo base_url() ?>" class="nav-link <?php if($this->uri->segment(2)==""){echo 'active';}?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard</p>
           </a>
@@ -32,7 +32,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo base_url('guru/rombel') ?>" class="nav-link">
+          <a href="<?php echo base_url('guru/rombel') ?>" class="nav-link  <?php if($this->uri->segment(2)=="rombel"){echo 'active';}?>">
             <i class="nav-icon fas fa-list-ul"></i>
             <p>Nilai Siswa</p>
           </a>
