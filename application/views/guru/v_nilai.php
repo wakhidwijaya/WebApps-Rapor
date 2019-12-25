@@ -31,19 +31,21 @@
                         <span class="h5 font-weight-bold">Input Nilai - <small id="kd" class="d-none"></small></span>
                     </div>
                     <div class="card-body">
-                        <table class="table table-condensed table-bordered table-hover">
-                                <tr>
-                                    <th>NIS</th>
-                                    <th>NAMA</th>
-                                    <th>NILAI</th>
-                                </tr>
-                            </thead>
-                            <tbody class="datanilai">
-                            </tbody>
-                        </table>
-                        <div class="mt-2 float-right">
-                            <input type="submit" class="btn btn-sm bg-info text-white" value="Simpan">
-                        </div>
+                        <form method="post" action="<?= base_url('guru/rombel/nilai/simpan')?>">
+                            <table class="table table-condensed table-bordered table-hover table-sm">
+                                    <tr>
+                                        <th>NIS</th>
+                                        <th>NAMA</th>
+                                        <th>NILAI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="datanilai">
+                                </tbody>
+                            </table>
+                            <div class="mt-2 float-right">
+                                <input type="submit" class="btn btn-sm bg-info text-white" value="Simpan">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -60,17 +62,9 @@
                 </div>
                 <div class="modal-body mx-3">
                     <form method="post" action="<?php echo base_url('guru/rombel/addkd')?>">
-                        <div class="form-group row">
-                            <select id="dropdown_kd" name="status" class="form-control">
-                                <option value="" disabled selected>Pilih KD</option>
-                                <option value="0">Kompetensi Dasar</option>
-                                <option value="1">Ujian Tengah Semester</option>
-                                <option value="2">Ujian Akhir Semester</option>
-                            </select>
-                        </div>
                         <input name="nip" type="hidden" class="form-control" value="<?php echo $data_kd['nip'] ?>" >
                         <input name="kelas" type="hidden" class="form-control" value="<?php echo $data_kd['id_kelas'] ?>" >
-                        <input name="id_kd" type="hidden" class="form-control" value="<?php echo $data_kd['id_kd'] ?>" >
+                        <input name="status" type="hidden" class="form-control" value="0" >
                         <div class="form-group row">
                             <input id="input_kd" name="kd" type="text" class="form-control" placeholder="Keterangan KD">
                         </div>

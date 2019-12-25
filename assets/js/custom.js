@@ -3,6 +3,7 @@ $(document).ready(function () {
 		ev.preventDefault();
 
 		var kd = $(this).attr('data-kd');
+		// $('#kd_id').val(kd);
 		var datakd = $(this).attr('data-namakd');
 		var kelas = $(this).attr('data-kelas');
 		console.log(kd, kelas);
@@ -20,7 +21,9 @@ $(document).ready(function () {
 					html += '<tr>'+
 						'<td>'+data[i].nis+'</td>'+
 						'<td>'+data[i].nama+'</td>'+
-						'<td width="12%"><input style="width: 100%" type="number" value="'+data[i].nilai+'"></td>'+
+						'<td width="12%">' +
+						'<input name="komda" value="'+kd+'" hidden>' +
+						'<input name="nilai['+data[i].id_siswa+']" style="width: 100%" type="number" value="'+data[i].nilai+'" max="100"></td>'+
 						'</tr>';
 				}
 				$('.datanilai').html(html);
@@ -31,18 +34,6 @@ $(document).ready(function () {
 
 });
 
-$('#dropdown_kd').change(function(){
-	if( $(this).val() == '1'){
-		$('#input_kd').val('Ujian Tengah Semester');
-		$('#input_kd').hide();
-	}else if ( $(this).val() == '2'){
-		$('#input_kd').val('Ujian Akhir Semester');
-		$('#input_kd').hide();
-	}else{
-		$('#input_kd').val('');
-		$('#input_kd').show();
-	}
-});
 // //DATA TABLES FOR EDIT
 // 	$(document).ready(function(){
 // 		$('#table-a').DataTable({

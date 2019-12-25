@@ -61,10 +61,12 @@ $route['logout'] = 'C_Login/logout';
 $route['guru'] = 'guru/C_Guru/index';
 $route['guru/jadwal'] = 'guru/C_Guru/jadwal';
 $route['guru/rombel'] = 'guru/C_Guru/rombel';
+$route['guru/rombel/ambilkelas'] = 'guru/C_Guru/ambilkelas';
 $route['guru/rombel/addkd'] = 'guru/C_Guru/add_kd';
 $route['guru/rombel/hapuskd/(:num)/(:num)'] = 'guru/C_Guru/delete_kd/$1/$2';
 $route['guru/rombel/nilai/(:num)'] = 'guru/C_Guru/kd/$1';
 $route['guru/rombel/nilai/(:num)/(:num)'] = 'guru/C_Guru/nilai/$1/$2';
+$route['guru/rombel/nilai/simpan'] = 'guru/C_Guru/simpan_nilai';
 $route['guru/wali'] = 'guru/C_Guru/wali';
 
 //SISWA
