@@ -11,7 +11,7 @@
       </div>
       <div class="info">
         <a href="<?php echo base_url() ?>" class="d-block"><?php echo $this->session->userdata('nama') . " - " . $this->session->userdata('username') ?></a>
-        <small class=" text-success"><i style="color: green" class="fa fa-circle fa-1x disabled"></i> Online</small>
+        <small class="text-light"><i class="fa  text-success fa-circle fa-1x disabled"></i> Online</small>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+          <a href="<?php echo base_url('guru/jadwal')?>" class="nav-link   <?php if($this->uri->segment(2)=="jadwal"){echo 'active';}?>">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>Jadwal Mengajar</p>
           </a>
@@ -38,7 +38,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+          <a href="<?php echo base_url('guru/wali')?>" class="nav-link   <?php if($this->uri->segment(2)=="wali"){echo 'active';}?>">
             <i class="nav-icon fas fa-users"></i>
             <p>Wali Kelas</p>
           </a>

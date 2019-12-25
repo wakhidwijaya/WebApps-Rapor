@@ -42,14 +42,6 @@ class C_Guru extends CI_Controller
         $this->load->view('layout/footer');
     }
     public function add_kd(){
-        $status = $this -> input -> post('status');
-        $kelas = $this -> input -> post('kelas');
-        if ($status != 0){
-            $cek_data = $this->M_Guru->lihatstatus($status, $kelas);
-            if (count($cek_data) > 0){
-                redirect($_SERVER['HTTP_REFERER']);
-            }
-            else{
                 $datakd = array(
                     'nip' => $this -> input -> post('nip'),
                     'id_kelas' => $this -> input -> post('kelas'),
@@ -71,8 +63,6 @@ class C_Guru extends CI_Controller
                     $this->M_Guru->input_nilai('tb_nilai', $datasiswa);
                 }
                 redirect(base_url('guru/rombel/nilai/'.$this->input->post('kelas')));
-            }
-        }
     }
     public function delete_kd($id_kd, $id_kelas){
         $this->M_Guru->hapus_siswa($id_kd);
@@ -83,5 +73,74 @@ class C_Guru extends CI_Controller
     {
         $data['nilai'] = $this->M_Guru->nilai($kd, $kelas);
         echo json_encode($data['nilai']);
+    }
+
+    public function jadwal(){
+        $id_guru = $this->session->userdata('username');
+        $data['jmlguru'] = $this->M_Guru->countguru($id_guru);
+        $data['jmlkelas'] = $this->M_Guru->countkelas();
+        $data['slot'] = count($data['jmlkelas']) / count($data['jmlguru']);
+
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('guru/v_jadwal', $data);
+        $this->load->view('layout/footer');
+    }
+    public function ambilkelas(){
+        $id_guru = $this->session->userdata('username');
+        $data['jmlguru'] = $this->M_Guru->countguru($id_guru);
+        $data['jmlkelas'] = $this->M_Guru->countkelas();
+        $data['slot'] = count($data['jmlkelas']) / count($data['jmlguru']);
+        $kd = array(
+            array(
+                'status' => 1,
+                'kd' => 'Ujian Tengah Smester'
+            ),
+            array(
+                'status' => 2,
+                'kd' => 'Ujian Akhir Smester'
+            )
+        );
+        $kelas = array_chunk($data['jmlkelas'], $data['slot']);
+
+
+                foreach ($kelas[0] as $kelasslot){
+                    foreach ($kd as $kddata){
+                        $datakd = array(
+                            'nip' => $this->session->userdata['username'],
+                            'id_kelas' => $kelasslot['id_kelas'],
+                            'kd' => $kddata['kd'],
+                            'status' => $kddata['status']
+                        );
+                        $this->M_Guru->input_kd('tb_materi', $datakd);
+                        $data = $this->M_Guru->datasiswa($kelasslot['id_kelas']);
+
+                        foreach ($data as $siswa){
+                            $data_kd = $this->M_Guru->kd_last();
+                            print_r($data_kd);
+                            $datasiswa = array(
+                                'id_siswa' => $siswa['nis'],
+                                'nilai' => 0,
+                                'semester' => 1,
+                                'id_kd' => $data_kd[0]->id_kd
+                            );
+                            print_r($datasiswa);
+                            $this->M_Guru->input_nilai('tb_nilai', $datasiswa);
+                        }
+                    }
+
+                }
+    }
+
+    public function simpan_nilai(){
+        $nilai = $this -> input -> post('nilai');
+        $id_kd = $this -> input -> post('komda');
+        foreach ($nilai as $nis => $nilaisiswa){
+            $this->M_Guru->updatenilai($nis, $nilaisiswa, $id_kd);
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function wali(){
+        echo 'wali';
     }
 }

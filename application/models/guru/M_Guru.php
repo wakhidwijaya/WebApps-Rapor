@@ -62,19 +62,32 @@ class M_Guru extends CI_Model
         $this->db->where('id_kd', $id);
         $this->db->delete('tb_nilai');
     }
-    function lihatstatus($status, $kelas){
-        $this->db->select('*');
-        $this->db->from('tb_materi');
-        $this->db->where('id_kelas', $kelas);
-        $this->db->where('status', $status);
-        $query = $this->db->get();
-        return $query->result();
-    }
+
     function input_kd($table,$data){
         $this->db->insert($table,$data);
     }
     function input_nilai($table,$data){
         $this->db->insert($table,$data);
+    }
+
+    function countguru($where){
+        $query = $this->db->query('
+        select * from tb_guru 
+        where id_mapel = (select id_mapel from tb_guru where nip = '.$where.')');
+         return $query->result_array();
+    }
+    function countkelas(){
+        $this->db->select('*');
+        $this->db->from('tb_kelas');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function updatenilai($nis, $nilaisiswa, $id_kd){
+        $this->db->set('nilai', $nilaisiswa);
+        $this->db->where('id_siswa', $nis);
+        $this->db->where('id_kd', $id_kd);
+        $this->db->update('tb_nilai');
     }
 }
 
