@@ -2,12 +2,14 @@
 
 class M_Siswa extends CI_Model
 {
-    private $_table = "tb_siswa";
-
-    public $nis;
-    public $nama;
-    public $kelas;
-    public $alamat;
+    public function get_siswa($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_siswa ts');
+        $this->db->where('ts.nis', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function nilai($id)
     {
@@ -22,25 +24,11 @@ class M_Siswa extends CI_Model
         return $query->result_array();
     }
 
-    public function get_siswa($id)
-    {
-        $this->db->select('*');
-        $this->db->from('tb_siswa ts');
-        $this->db->where('ts.nis', $id);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
 
-    public function getEdit($field, $value)
+    function edit($id, $alamat)
     {
-        $this->db->where($field, $value);
-        return $this->db->get('tb_siswa');
-    }
-
-    public function update($post)
-    {
-        $this->db->where('id_siswa', $id);
-        $this->db->update('tb_siswa', $post);
-        return $this->db->affected_rows();
+        $this->db->set('alamat', $alamat);
+        $this->db->where('nis', $id);
+        $this->db->update('tb_siswa');
     }
 }
