@@ -2,7 +2,8 @@
 
 class M_Guru extends CI_Model
 {
-    function datadiri($where){
+    function datadiri($where)
+    {
         $this->db->select('*');
         $this->db->from('tb_guru tg');
         $this->db->join('tb_mapel tm', 'tg.id_mapel = tm.id_mapel');
@@ -10,7 +11,8 @@ class M_Guru extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
-    function rombel($where){
+    function rombel($where)
+    {
         $this->db->select('tk.kelas, tk.id_kelas, tm.mapel, tg.nama');
         $this->db->from('tb_materi tb_kd');
         $this->db->join('tb_guru tg', 'tg.nip = tb_kd.nip');
@@ -22,7 +24,8 @@ class M_Guru extends CI_Model
         return $query->result_array();
     }
 
-    function kd($where){
+    function kd($where)
+    {
         $this->db->select('*');
         $this->db->from('tb_materi');
         $this->db->where('tb_materi.id_kelas', $where);
@@ -30,7 +33,8 @@ class M_Guru extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
-    function nilai($kd, $kelas){
+    function nilai($kd, $kelas)
+    {
         $this->db->select('*');
         $this->db->from('tb_nilai tn');
         $this->db->join('tb_siswa ts', 'tn.id_siswa = ts.nis');
@@ -39,14 +43,16 @@ class M_Guru extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
-    function datasiswa($where){
+    function datasiswa($where)
+    {
         $this->db->select('*');
         $this->db->from('tb_siswa ts');
         $this->db->where('ts.kelas', $where);
         $query = $this->db->get();
         return $query->result_array();
     }
-    function kd_last(){
+    function kd_last()
+    {
         $this->db->select('tm.id_kd');
         $this->db->from('tb_materi tm');
         $this->db->order_by('tm.id_kd', 'DESC');
@@ -54,40 +60,46 @@ class M_Guru extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-    function hapus_kd($id){
+    function hapus_kd($id)
+    {
         $this->db->where('id_kd', $id);
         $this->db->delete('tb_materi');
     }
-    function hapus_siswa($id){
+    function hapus_siswa($id)
+    {
         $this->db->where('id_kd', $id);
         $this->db->delete('tb_nilai');
     }
 
-    function input_kd($table,$data){
-        $this->db->insert($table,$data);
+    function input_kd($table, $data)
+    {
+        $this->db->insert($table, $data);
     }
-    function input_nilai($table,$data){
-        $this->db->insert($table,$data);
+    function input_nilai($table, $data)
+    {
+        $this->db->insert($table, $data);
     }
 
-    function countguru($where){
+    function countguru($where)
+    {
         $query = $this->db->query('
         select * from tb_guru 
-        where id_mapel = (select id_mapel from tb_guru where nip = '.$where.')');
-         return $query->result_array();
+        where id_mapel = (select id_mapel from tb_guru where nip = ' . $where . ')');
+        return $query->result_array();
     }
-    function countkelas(){
+    function countkelas()
+    {
         $this->db->select('*');
         $this->db->from('tb_kelas');
         $query = $this->db->get();
         return $query->result_array();
     }
 
-    function updatenilai($nis, $nilaisiswa, $id_kd){
+    function updatenilai($nis, $nilaisiswa, $id_kd)
+    {
         $this->db->set('nilai', $nilaisiswa);
         $this->db->where('id_siswa', $nis);
         $this->db->where('id_kd', $id_kd);
         $this->db->update('tb_nilai');
     }
 }
-

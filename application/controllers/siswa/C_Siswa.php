@@ -32,9 +32,13 @@ class C_Siswa extends CI_Controller
         $this->load->view('layout/footer');
     }
 
-    // function edit($id)
-    // {
-    //     $id_siswa =  $this->session->userdata('username');
-    //     $data['nilai'] = $this->M_Siswa->nilai($id_siswa);
-    // }
+    function edit($id)
+    {
+        $id_siswa =  $id;
+        $alamat      = $this->input->post('alamat');
+
+        $this->M_Siswa->edit($id, $alamat);
+
+        redirect(base_url());
+    }
 }

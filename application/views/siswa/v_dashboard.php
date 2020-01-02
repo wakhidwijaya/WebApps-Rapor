@@ -45,7 +45,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <?php foreach ($siswa as $data_siswa) { ?>
+                                <form action="<?php echo base_url('siswa/edit/' . $data_siswa['nis']) ?>" method="post">
                                     <div class="form-group row">
                                         <label class="form-label col-md-2">NIS</label>
                                         <input type="text" class="form-control" value="<?php echo $data_siswa['nis'] ?>" disabled>
@@ -65,16 +65,29 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="form-label col-md-2">ALAMAT</label>
-                                        <input type="text" class="form-control" value="<?php echo $data_siswa['alamat'] ?>">
+                                        <input type="text" class="form-control" name="alamat" id="alamat" value="<?php echo $data_siswa['alamat'] ?>">
                                     </div>
-                                <?php } ?>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+                                <!-- <button type="submit" class="btn btn-primary" data-dismiss="modal">Simpan</button> -->
+                                <input type="submit" class="btn btn-primary" value="simpan">
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+                <!-- <script>
+                    $(document).ready(function() {
+                        // Untuk sunting
+                        $('#staticBackdrop').on('show.bs.modal', function(event) {
+                            var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+                            var modal = $(this)
+
+                            // Isi nilai pada field
+                            modal.find('#alamat').html(div.data('alamat'));
+                        });
+                    });
+                </script> -->
             </div>
         </div>
     </div><!-- /.container-fluid -->

@@ -70,7 +70,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo base_url('siswa/nilai_siswa') ?>" class="nav-link">
+          <a href="<?php echo base_url('siswa/nilai') ?>" class="nav-link">
             <i class="nav-icon fas fa-list-ul"></i>
             <p>Nilai</p>
           </a>
