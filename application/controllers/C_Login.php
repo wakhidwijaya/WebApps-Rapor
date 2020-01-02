@@ -58,7 +58,9 @@ class C_Login extends CI_Controller {
                 }
             }
             else{
-                echo "Username atau Password yang dimasukkan salah";
+//                echo "Username atau Password yang dimasukkan salah";
+                $this->session->set_flashdata('errormsg', 'Username atau Password salah'); // Buat session flashdata
+                redirect(base_url());
             }
         }
 

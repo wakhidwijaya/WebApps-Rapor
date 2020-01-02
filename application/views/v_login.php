@@ -29,9 +29,29 @@
                                     <input type="password" class="form-control" name="password">
                                 </div>
                                 <input type="submit" class="btn btn-block bg-dark text-white" value="LOGIN">
+                            </form>
                         </div>
                     </div>
-                    </form>
+                    <?php
+                        if($this->session->flashdata('errormsg')){
+
+                        }
+                    ?>
+
+                    <div class="modal fade in" id="modalerror" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    asu
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if($this->session->flashdata('errormsg')){ ?>
+                        <div class="card bg-danger text-light p-2 text-center">
+                                <?php echo $this->session->flashdata('errormsg'); // Tampilkan pesannya ?>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
