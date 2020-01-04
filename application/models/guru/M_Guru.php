@@ -24,11 +24,12 @@ class M_Guru extends CI_Model
         return $query->result_array();
     }
 
-    function kd($where)
+    function kd($kelas, $id_guru)
     {
         $this->db->select('*');
         $this->db->from('tb_materi');
-        $this->db->where('tb_materi.id_kelas', $where);
+        $this->db->where('tb_materi.id_kelas', $kelas);
+        $this->db->where('tb_materi.nip', $id_guru);
         $this->db->order_by('status', 'ASC');
         $query = $this->db->get();
         return $query->result_array();
@@ -82,9 +83,7 @@ class M_Guru extends CI_Model
 
     function countguru($where)
     {
-        $query = $this->db->query('
-        select * from tb_guru 
-        where id_mapel = (select id_mapel from tb_guru where nip = ' . $where . ')');
+        $query = $this->db->query('select * from tb_guru where id_mapel = (select id_mapel from tb_guru where nip = ' . $where . ')');
         return $query->result_array();
     }
     function countkelas()
@@ -101,5 +100,14 @@ class M_Guru extends CI_Model
         $this->db->where('id_siswa', $nis);
         $this->db->where('id_kd', $id_kd);
         $this->db->update('tb_nilai');
+    }
+
+    function cekgurumapel($where){
+        $query = $this->db->query('SELECT nip FROM tb_guru WHERE id_mapel = (SELECT id_mapel FROM tb_guru WHERE nip= '.$where.')');
+        return $query->result_array();
+    }
+    function cekmateri($nip, $kelas){
+        $query = $this->db->query("SELECT * FROM `tb_materi` WHERE nip =".$nip." AND id_kelas =".$kelas." ");
+        return $query->result_array();
     }
 }

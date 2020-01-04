@@ -28,14 +28,21 @@ class C_Guru extends CI_Controller
     {
         $id_guru =  $this->session->userdata('username');
         $data['rombel'] = $this->M_Guru->rombel($id_guru);
+
+        $data['jmlguru'] = $this->M_Guru->countguru($id_guru);
+        $data['jmlkelas'] = $this->M_Guru->countkelas();
+        $data['slot'] = count($data['jmlkelas']) / count($data['jmlguru']);
+
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('guru/v_rombel', $data);
         $this->load->view('layout/footer');
     }
-    public function kd($id)
+    public function kd($kelas)
     {
-        $data['kd'] = $this->M_Guru->kd($id);
+        $id_guru =  $this->session->userdata('username');
+        $data['kd'] = $this->M_Guru->kd($kelas, $id_guru);
+
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('guru/v_nilai', $data);
@@ -107,32 +114,68 @@ class C_Guru extends CI_Controller
         );
         $kelas = array_chunk($data['jmlkelas'], $data['slot']);
 
+        $slot=0;
+        foreach ($kelas as $kelasdata){
+            if ($slot == $data['slot']){
+                break;
+            }
+            foreach ($kelasdata as $kelasslot){
+                $slot++;
+                $cekguru = $this->M_Guru->cekgurumapel($id_guru);
+                foreach ($cekguru as $gurunip){
+                    $cekmateri = $this->M_Guru->cekmateri($gurunip['nip'], $kelasslot['id_kelas']);
+                    if (count($cekmateri) == 0){
+                        foreach ($kd as $kddata) {
+                            $datakd = array(
+                                'nip' => $this->session->userdata['username'],
+                                'id_kelas' => $kelasslot['id_kelas'],
+                                'kd' => $kddata['kd'],
+                                'status' => $kddata['status']
+                            );
+                            $this->M_Guru->input_kd('tb_materi', $datakd);
+                            $data = $this->M_Guru->datasiswa($kelasslot['id_kelas']);
 
-        foreach ($kelas[0] as $kelasslot) {
-            foreach ($kd as $kddata) {
-                $datakd = array(
-                    'nip' => $this->session->userdata['username'],
-                    'id_kelas' => $kelasslot['id_kelas'],
-                    'kd' => $kddata['kd'],
-                    'status' => $kddata['status']
-                );
-                $this->M_Guru->input_kd('tb_materi', $datakd);
-                $data = $this->M_Guru->datasiswa($kelasslot['id_kelas']);
-
-                foreach ($data as $siswa) {
-                    $data_kd = $this->M_Guru->kd_last();
-                    print_r($data_kd);
-                    $datasiswa = array(
-                        'id_siswa' => $siswa['nis'],
-                        'nilai' => 0,
-                        'semester' => 1,
-                        'id_kd' => $data_kd[0]->id_kd
-                    );
-                    print_r($datasiswa);
-                    $this->M_Guru->input_nilai('tb_nilai', $datasiswa);
+                            foreach ($data as $siswa) {
+                                $data_kd = $this->M_Guru->kd_last();
+                                $datasiswa = array(
+                                    'id_siswa' => $siswa['nis'],
+                                    'nilai' => 0,
+                                    'semester' => 1,
+                                    'id_kd' => $data_kd[0]->id_kd
+                                );
+                                $this->M_Guru->input_nilai('tb_nilai', $datasiswa);
+                            }
+                        }
+                    }
                 }
             }
         }
+        redirect(base_url('guru/rombel'));
+//        foreach ($kelas[0] as $kelasslot) {
+//            foreach ($kd as $kddata) {
+//                $datakd = array(
+//                    'nip' => $this->session->userdata['username'],
+//                    'id_kelas' => $kelasslot['id_kelas'],
+//                    'kd' => $kddata['kd'],
+//                    'status' => $kddata['status']
+//                );
+//                $this->M_Guru->input_kd('tb_materi', $datakd);
+//                $data = $this->M_Guru->datasiswa($kelasslot['id_kelas']);
+//
+//                foreach ($data as $siswa) {
+//                    $data_kd = $this->M_Guru->kd_last();
+//                    print_r($data_kd);
+//                    $datasiswa = array(
+//                        'id_siswa' => $siswa['nis'],
+//                        'nilai' => 0,
+//                        'semester' => 1,
+//                        'id_kd' => $data_kd[0]->id_kd
+//                    );
+//                    print_r($datasiswa);
+//                    $this->M_Guru->input_nilai('tb_nilai', $datasiswa);
+//                }
+//            }
+//        }
     }
 
     public function simpan_nilai()
