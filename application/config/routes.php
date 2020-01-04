@@ -71,6 +71,7 @@ $route['guru/wali'] = 'guru/C_Guru/wali';
 
 //SISWA
 $route['siswa'] = 'siswa/C_Siswa/index';
+// $route['siswa'] = 'siswa/C_Siswa/chart';
 // $route['siswa/daftar'] = 'siswa/C_Siswa/siswa';
 $route['siswa/nilai'] = 'siswa/C_Siswa/nilai';
 $route['siswa/edit/(:num)'] = 'siswa/C_Siswa/edit/$1';
