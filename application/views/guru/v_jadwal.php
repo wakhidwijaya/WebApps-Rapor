@@ -1,11 +1,10 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="info-box">
-                Kelas yang bisa diambil = <?php echo $slot?>
-                <a href="<?php echo base_url('guru/rombel/ambilkelas')?>">
-                    Ambil Kelas
-                </a>
+            <div class="card col-12 bg-danger">
+                <div class="card-body">
+                    <i class="fas fa-hard-hat fa-10x"></i>
+                </div>
             </div>
         </div>
     </div>
