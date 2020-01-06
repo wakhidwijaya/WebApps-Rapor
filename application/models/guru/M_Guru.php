@@ -88,7 +88,7 @@ class M_Guru extends CI_Model
     }
     function countkelas()
     {
-        $this->db->select('*');
+        $this->db->select('id_kelas');
         $this->db->from('tb_kelas');
         $query = $this->db->get();
         return $query->result_array();
@@ -107,7 +107,7 @@ class M_Guru extends CI_Model
         return $query->result_array();
     }
     function cekmateri($nip, $kelas){
-        $query = $this->db->query("SELECT * FROM `tb_materi` WHERE nip =".$nip." AND id_kelas =".$kelas." ");
+        $query = $this->db->query("SELECT id_kelas FROM `tb_materi` WHERE nip IN (".implode(',', array_map('intval', $nip)).") AND id_kelas IN (".implode(',', array_map('intval', $kelas)).")");
         return $query->result_array();
     }
 }
