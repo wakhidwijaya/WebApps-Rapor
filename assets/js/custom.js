@@ -1,4 +1,4 @@
-
+//v_nilai guru
 $(document).ready(function () {
 	$('.lihatnilai').click(function (ev) {
 		ev.preventDefault();
@@ -12,19 +12,19 @@ $(document).ready(function () {
 			type: "GET",
 			url: `${urllihatnilai}/${kd}/${kelas}`, // echo php raiso neng file js
 			dataType: "JSON",
-			success : function(data){
+			success: function (data) {
 				$('#kd').removeClass('d-none');
 				$('#kd').html(datakd);
 				$('.nilai').removeClass('d-none');
 				var html = '';
 				var i;
-				for(i=0; i<data.length; i++){
-					html += '<tr>'+
-						'<td>'+data[i].nis+'</td>'+
-						'<td>'+data[i].nama+'</td>'+
+				for (i = 0; i < data.length; i++) {
+					html += '<tr>' +
+						'<td>' + data[i].nis + '</td>' +
+						'<td>' + data[i].nama + '</td>' +
 						'<td width="12%">' +
-						'<input name="komda" value="'+kd+'" hidden>' +
-						'<input name="nilai['+data[i].id_siswa+']" style="width: 100%" type="number" value="'+data[i].nilai+'" max="100"></td>'+
+						'<input name="komda" value="' + kd + '" hidden>' +
+						'<input name="nilai[' + data[i].id_siswa + ']" style="width: 100%" type="number" value="' + data[i].nilai + '" max="100"></td>' +
 						'</tr>';
 				}
 				$('.datanilai').html(html);
@@ -36,15 +36,15 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-	var render=createwidgetlokasi("provinsi","kabupaten","kecamatan","kelurahan");
+	var render = createwidgetlokasi("provinsi", "kabupaten", "kecamatan", "kelurahan");
 });
 
 $(document).ready(function () {
 	// Set the date we're counting down to
 	var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
 
-// Update the count down every 1 second
-	var x = setInterval(function() {
+	// Update the count down every 1 second
+	var x = setInterval(function () {
 
 		// Get today's date and time
 		var now = new Date().getTime();
@@ -64,7 +64,7 @@ $(document).ready(function () {
 		// If the count down is finished, write some text
 		if (distance < 0) {
 			clearInterval(x);
-			$('#countdown').html( "EXPIRED");
+			$('#countdown').html("EXPIRED");
 		}
 	}, 1000);
 })

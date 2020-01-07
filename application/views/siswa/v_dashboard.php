@@ -62,7 +62,7 @@
                                         <label class="form-label col-md-2">TTL</label>
                                         <input type="text" class="form-control" value=" <?php echo $data_siswa['tempat_lahir'] . "&emsp;" . "/" . "&emsp;" . $data_siswa['tanggal_lahir'] ?>    " disabled>
                                     </div>
-                                    <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                         <label class="form-label col-md-2">Provinsi</label>
                                         <select class="form-control" id="provinsi" name="provinsi">
                                     </div>
@@ -80,12 +80,12 @@
                                     </div>
 
 
-                                    <div id="output"></div>
+                                    <div id="output"></div> -->
 
-                                    <!-- <div class="form-group row">
-
+                                    <div class="form-group row">
+                                        <label class="form-label col-md-2">Alamat</label>
                                         <input type="text" class="form-control" name="alamat" id="alamat" value="<?php echo $data_siswa['alamat'] ?>">
-                                    </div> -->
+                                    </div>
                             </div>
                             <div class="modal-footer">
                                 <!-- <button type="submit" class="btn btn-primary" data-dismiss="modal">Simpan</button> -->
@@ -113,7 +113,7 @@
                                 "data": {
                                     "labels ": [<?php
                                                 foreach ($nilai_chart as $nilaichart) {
-                                                    echo $nilaichart['kd']; // you can also use $row if you don't use keys                  
+                                                    echo json_encode($nilaichart['kd']); // you can also use $row if you don't use keys                  
                                                 }
                                                 ?>],
                                     "datasets": [{
@@ -140,7 +140,10 @@
                                 }
                             });
                         </script>
-                        <script src="http://api.iksgroup.co.id/apijs/lokasiapi.js"></script>
+                        <script>
+                            const urlchart = '<?= base_url('siswa/rombel/nilai') ?>';
+                        </script>
+                        <!-- <script src="http://api.iksgroup.co.id/apijs/lokasiapi.js"></script>
                         <script>
                             $(document).ready(function() {
                                 var render = createwidgetlokasi("provinsi", "kabupaten", "kecamatan", "kelurahan");
@@ -154,7 +157,7 @@
                                     $("#output").html(trackdatalokasi);
                                 });
                             });
-                        </script>
+                        </script> -->
                     </div>
                 </p>
             </div>
