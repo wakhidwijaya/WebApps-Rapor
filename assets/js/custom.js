@@ -1,18 +1,16 @@
-<<<<<<< HEAD
-//v_nilai guru
-=======
 $(document).ready(function () {
 	$('#editguru').click(function (ev) {
 		$.ajax({
 			type: "GET",
 			url: "http://dev.farizdotid.com/api/daerahindonesia/provinsi",
 			dataType: "JSON",
-			success : function (data) {
+			success: function (data) {
 				var html = '';
 				var i;
-				for(i=0; i<data.semuaprovinsi.length; i++){
-					html += '<option value='+data.semuaprovinsi[i].id+'>'+data.semuaprovinsi[i].nama+'</option>';
-				}$('.provinsi').html(html);
+				for (i = 0; i < data.semuaprovinsi.length; i++) {
+					html += '<option value=' + data.semuaprovinsi[i].id + '>' + data.semuaprovinsi[i].nama + '</option>';
+				}
+				$('.provinsi').html(html);
 			}
 		});
 	});
@@ -21,14 +19,15 @@ $(document).ready(function () {
 		var id = $(this).val();
 		$.ajax({
 			type: "GET",
-			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/'+id+'/kabupaten',
+			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/' + id + '/kabupaten',
 			dataType: "JSON",
-			success : function (data) {
+			success: function (data) {
 				var html = '';
 				var i;
-				for(i=0; i<data.kabupatens.length; i++){
-					html += '<option value='+data.kabupatens[i].id+'>'+data.kabupatens[i].nama+'</option>';
-				}$('.kabupaten').html(html);
+				for (i = 0; i < data.kabupatens.length; i++) {
+					html += '<option value=' + data.kabupatens[i].id + '>' + data.kabupatens[i].nama + '</option>';
+				}
+				$('.kabupaten').html(html);
 			}
 		});
 	})
@@ -37,14 +36,15 @@ $(document).ready(function () {
 		var id = $(this).val();
 		$.ajax({
 			type: "GET",
-			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/'+id+'/kecamatan',
+			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/' + id + '/kecamatan',
 			dataType: "JSON",
-			success : function (data) {
+			success: function (data) {
 				var html = '';
 				var i;
-				for(i=0; i<data.kecamatans.length; i++){
-					html += '<option value='+data.kecamatans[i].id+'>'+data.kecamatans[i].nama+'</option>';
-				}$('.kecamatan').html(html);
+				for (i = 0; i < data.kecamatans.length; i++) {
+					html += '<option value=' + data.kecamatans[i].id + '>' + data.kecamatans[i].nama + '</option>';
+				}
+				$('.kecamatan').html(html);
 			}
 		});
 	})
@@ -53,21 +53,21 @@ $(document).ready(function () {
 		var id = $(this).val();
 		$.ajax({
 			type: "GET",
-			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/kecamatan/'+id+'/desa',
+			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/kecamatan/' + id + '/desa',
 			dataType: "JSON",
-			success : function (data) {
+			success: function (data) {
 				var html = '';
 				var i;
-				for(i=0; i<data.desas.length; i++){
-					html += '<option value='+data.desas[i].id+'>'+data.desas[i].nama+'</option>';
-				}$('.kelurahan').html(html);
+				for (i = 0; i < data.desas.length; i++) {
+					html += '<option value=' + data.desas[i].id + '>' + data.desas[i].nama + '</option>';
+				}
+				$('.kelurahan').html(html);
 			}
 		});
 	})
 
 });
 
->>>>>>> 3b4194d0da260c0af8bfc55062d5938f90fb1f55
 $(document).ready(function () {
 	$('.lihatnilai').click(function (ev) {
 		ev.preventDefault();
@@ -103,11 +103,11 @@ $(document).ready(function () {
 		$.ajax({
 			type: "GET",
 			url: `${urllihatnilai}/kd/${kd}`,
-			dataType : "JSON",
-			success : function (data) {
+			dataType: "JSON",
+			success: function (data) {
 				$('#chartpiekd').removeClass('d-none');
 				$('#kdname').html(datakd);
-				var countdata =[];
+				var countdata = [];
 				var labeldata = [];
 				var coloR = [];
 				var bgcolorchart = [
@@ -117,16 +117,16 @@ $(document).ready(function () {
 					'rgb(75, 192, 192)'
 				];
 				var i;
-				for (i = 0; i<data.length; i++){
+				for (i = 0; i < data.length; i++) {
 					countdata.push(data[i].countt);
-					labeldata.push("Nilai "+data[i].rangenilai);
+					labeldata.push("Nilai " + data[i].rangenilai);
 				}
 				datachart = {
 					datasets: [{
-						label : labeldata,
+						label: labeldata,
 						data: countdata,
-						backgroundColor : bgcolorchart,
-						borderColor : 'rgba(200,200,200,0.75)',
+						backgroundColor: bgcolorchart,
+						borderColor: 'rgba(200,200,200,0.75)',
 						hoverBorderColor: 'rgba(200,200,200,1)',
 					}],
 					labels: labeldata,
@@ -135,7 +135,9 @@ $(document).ready(function () {
 				var myPieChart = new Chart(ctx, {
 					type: 'pie',
 					data: datachart,
-					options: {responsive : true}
+					options: {
+						responsive: true
+					}
 				});
 			}
 		});
