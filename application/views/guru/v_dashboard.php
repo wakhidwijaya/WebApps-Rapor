@@ -103,13 +103,22 @@
 
                                 </div>
 
+<!--                                    <input type="text" class="form-control" name="alamat" id="alamat" value="--><?php //echo $data_diri['alamat'] ?><!--">-->
                                 <div class="form-group">
                                     <label class="form-label col-md-2">ALAMAT</label>
-                                    <input type="text" class="form-control" name="alamat" id="alamat" value="<?php echo $data_diri['alamat'] ?>">
-                                    <input type="text" id="provinsi">
-                                    <input type="text" id="kabupaten">
-                                    <input type="text" id="kecamatan">
-                                    <input type="text" id="kelurahan">
+                                    <select name="provinsi" class="form-control" type="text" id="provinsi">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label col-md-2">ALAMAT</label>
+                                    <select name="kabupaten" class="form-control" type="text" id="kabupaten">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label col-md-2">ALAMAT</label>
+                                    <select name="kecamatan" class="form-control" type="text" id="kecamatan">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label col-md-2">ALAMAT</label>
+                                    <select name="kelurahan" class="form-control" type="text" id="kelurahan">
                                 </div>
                         </div>
                         <div class="modal-footer">

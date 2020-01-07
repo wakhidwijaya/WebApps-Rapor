@@ -142,49 +142,6 @@ class C_Guru extends CI_Controller
                 if ($slot == 0){redirect(base_url('guru/rombel'));}
             }
         }
-//        foreach ($kelas as $kelasdata){
-//            foreach ($kelasdata as $kelasslot){
-//                $slot++;
-//                $cekguru = $this->M_Guru->cekgurumapel($id_guru);
-//                foreach ($cekguru as $gurunip){
-//                    $cekmateri = $this->M_Guru->cekmateri($gurunip['nip']);
-//                    if (count($cekmateri) == 0){
-//                        if ($gurunip['nip'] == $id_guru){
-//                        }
-//                    }
-//                }
-//            }
-//            if ($slot >= $data['slot']){
-//                echo "<br/><br/><br/>".$slot;
-//                break;
-//            }
-//        }
-//        redirect(base_url('guru/rombel'));
-//        foreach ($kelas[0] as $kelasslot) {
-//            foreach ($kd as $kddata) {
-//                $datakd = array(
-//                    'nip' => $this->session->userdata['username'],
-//                    'id_kelas' => $kelasslot['id_kelas'],
-//                    'kd' => $kddata['kd'],
-//                    'status' => $kddata['status']
-//                );
-//                $this->M_Guru->input_kd('tb_materi', $datakd);
-//                $data = $this->M_Guru->datasiswa($kelasslot['id_kelas']);
-//
-//                foreach ($data as $siswa) {
-//                    $data_kd = $this->M_Guru->kd_last();
-//                    print_r($data_kd);
-//                    $datasiswa = array(
-//                        'id_siswa' => $siswa['nis'],
-//                        'nilai' => 0,
-//                        'semester' => 1,
-//                        'id_kd' => $data_kd[0]->id_kd
-//                    );
-//                    print_r($datasiswa);
-//                    $this->M_Guru->input_nilai('tb_nilai', $datasiswa);
-//                }
-//            }
-//        }
     }
 
     public function simpan_nilai()

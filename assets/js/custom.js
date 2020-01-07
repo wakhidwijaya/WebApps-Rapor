@@ -36,10 +36,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-	var render=createwidgetlokasi("provinsi","kabupaten","kecamatan","kelurahan");
-});
-
-$(document).ready(function () {
 	// Set the date we're counting down to
 	var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
 
