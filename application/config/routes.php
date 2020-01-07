@@ -66,6 +66,7 @@ $route['guru/rombel/addkd'] = 'guru/C_Guru/add_kd';
 $route['guru/rombel/hapuskd/(:num)/(:num)'] = 'guru/C_Guru/delete_kd/$1/$2';
 $route['guru/rombel/nilai/(:num)'] = 'guru/C_Guru/kd/$1';
 $route['guru/rombel/nilai/(:num)/(:num)'] = 'guru/C_Guru/nilai/$1/$2';
+$route['guru/rombel/nilai/kd/(:num)'] = 'guru/C_Guru/chartkd/$1';
 $route['guru/rombel/nilai/simpan'] = 'guru/C_Guru/simpan_nilai';
 $route['guru/wali'] = 'guru/C_Guru/wali';
 

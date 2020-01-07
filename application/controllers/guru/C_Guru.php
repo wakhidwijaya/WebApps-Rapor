@@ -83,6 +83,11 @@ class C_Guru extends CI_Controller
         $data['nilai'] = $this->M_Guru->nilai($kd, $kelas);
         echo json_encode($data['nilai']);
     }
+    public function chartkd($kd)
+    {
+        $data['chartkd'] = $this->M_Guru->chartkd($kd);
+        echo json_encode($data['chartkd']);
+    }
 
     public function jadwal()
     {
