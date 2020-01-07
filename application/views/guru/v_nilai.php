@@ -24,6 +24,15 @@
                         </ul>
                     </div>
                 </div>
+                <div class="card bg-light d-none" id="chartpiekd">
+                    <div class="card-header">
+                        <span class="h5 font-weight-bold">Grafik Nilai</span><br/>
+                        <small id="kdname"></small>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartkd"></canvas>
+                    </div>
+                </div>
             </div>
             <div class="nilai col-8 d-none">
                 <div class="card bg-light">
@@ -80,4 +89,5 @@
 </div>
 <script>
     const urllihatnilai = '<?= base_url('guru/rombel/nilai') ?>';
+    const urlchartkd = '<?php base_url('guru/rombel/nilai/kd') ?>';
 </script>

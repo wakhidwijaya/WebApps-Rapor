@@ -44,6 +44,20 @@ class M_Guru extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    function chartkd($kd){
+        $query = $this->db->query('SELECT
+            case 
+                when nilai between 0 and 25 then "0 - 25"
+                when nilai between 26 and 50 then "26 - 50"
+                when nilai between 51 and 75 then "51 - 75"
+                when nilai between 76 and 100 then "76 - 100"
+            END as rangenilai,
+            COUNT(1) as countt
+            FROM tb_nilai
+            WHERE id_kd = 405
+            GROUP BY rangenilai');
+        return $query->result_array();
+    }
     function datasiswa($where)
     {
         $this->db->select('*');

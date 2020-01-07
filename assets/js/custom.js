@@ -1,4 +1,73 @@
+<<<<<<< HEAD
 //v_nilai guru
+=======
+$(document).ready(function () {
+	$('#editguru').click(function (ev) {
+		$.ajax({
+			type: "GET",
+			url: "http://dev.farizdotid.com/api/daerahindonesia/provinsi",
+			dataType: "JSON",
+			success : function (data) {
+				var html = '';
+				var i;
+				for(i=0; i<data.semuaprovinsi.length; i++){
+					html += '<option value='+data.semuaprovinsi[i].id+'>'+data.semuaprovinsi[i].nama+'</option>';
+				}$('.provinsi').html(html);
+			}
+		});
+	});
+	$('.provinsi').change(function (ev) {
+		$('.formkab').removeClass('d-none');
+		var id = $(this).val();
+		$.ajax({
+			type: "GET",
+			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/'+id+'/kabupaten',
+			dataType: "JSON",
+			success : function (data) {
+				var html = '';
+				var i;
+				for(i=0; i<data.kabupatens.length; i++){
+					html += '<option value='+data.kabupatens[i].id+'>'+data.kabupatens[i].nama+'</option>';
+				}$('.kabupaten').html(html);
+			}
+		});
+	})
+	$('.kabupaten').change(function (ev) {
+		$('.formkec').removeClass('d-none');
+		var id = $(this).val();
+		$.ajax({
+			type: "GET",
+			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/'+id+'/kecamatan',
+			dataType: "JSON",
+			success : function (data) {
+				var html = '';
+				var i;
+				for(i=0; i<data.kecamatans.length; i++){
+					html += '<option value='+data.kecamatans[i].id+'>'+data.kecamatans[i].nama+'</option>';
+				}$('.kecamatan').html(html);
+			}
+		});
+	})
+	$('.kecamatan').change(function (ev) {
+		$('.formkel').removeClass('d-none');
+		var id = $(this).val();
+		$.ajax({
+			type: "GET",
+			url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/kecamatan/'+id+'/desa',
+			dataType: "JSON",
+			success : function (data) {
+				var html = '';
+				var i;
+				for(i=0; i<data.desas.length; i++){
+					html += '<option value='+data.desas[i].id+'>'+data.desas[i].nama+'</option>';
+				}$('.kelurahan').html(html);
+			}
+		});
+	})
+
+});
+
+>>>>>>> 3b4194d0da260c0af8bfc55062d5938f90fb1f55
 $(document).ready(function () {
 	$('.lihatnilai').click(function (ev) {
 		ev.preventDefault();
@@ -7,6 +76,7 @@ $(document).ready(function () {
 		// $('#kd_id').val(kd);
 		var datakd = $(this).attr('data-namakd');
 		var kelas = $(this).attr('data-kelas');
+		var ctx = $('#chartkd');
 		console.log(kd, kelas);
 		$.ajax({
 			type: "GET",
@@ -28,6 +98,45 @@ $(document).ready(function () {
 						'</tr>';
 				}
 				$('.datanilai').html(html);
+			}
+		});
+		$.ajax({
+			type: "GET",
+			url: `${urllihatnilai}/kd/${kd}`,
+			dataType : "JSON",
+			success : function (data) {
+				$('#chartpiekd').removeClass('d-none');
+				$('#kdname').html(datakd);
+				var countdata =[];
+				var labeldata = [];
+				var coloR = [];
+				var bgcolorchart = [
+					'rgb(255, 99, 132)',
+					'rgb(255, 159, 64)',
+					'rgb(255, 205, 86)',
+					'rgb(75, 192, 192)'
+				];
+				var i;
+				for (i = 0; i<data.length; i++){
+					countdata.push(data[i].countt);
+					labeldata.push("Nilai "+data[i].rangenilai);
+				}
+				datachart = {
+					datasets: [{
+						label : labeldata,
+						data: countdata,
+						backgroundColor : bgcolorchart,
+						borderColor : 'rgba(200,200,200,0.75)',
+						hoverBorderColor: 'rgba(200,200,200,1)',
+					}],
+					labels: labeldata,
+					// These labels appear in the legend and in the tooltips when hovering different arcs
+				};
+				var myPieChart = new Chart(ctx, {
+					type: 'pie',
+					data: datachart,
+					options: {responsive : true}
+				});
 			}
 		});
 		return false;

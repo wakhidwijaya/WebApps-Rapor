@@ -5,7 +5,7 @@
                 <div class="card bg-light">
                     <div class="card-header h5 text-bold">
                         Biodata
-                        <a href="#" class="float-right text-gray-dark" data-toggle="modal" data-target="#editprofil">
+                        <a id="editguru" href="#" class="float-right text-gray-dark" data-toggle="modal" data-target="#editprofil">
                             <i class="fas fa-user-edit"></i>
                         </a>
                     </div>
@@ -105,25 +105,24 @@
 
 
                                 </div>
-
                                 <!--                                    <input type="text" class="form-control" name="alamat" id="alamat" value="--><?php //echo $data_diri['alamat'] 
                                                                                                                                                     ?>
                                 <!--">-->
                                 <div class="form-group">
-                                    <label class="form-label col-md-2">ALAMAT</label>
-                                    <select name="provinsi" class="form-control" type="text" id="provinsi">
+                                    <label class="form-label col-md-2">Provinsi</label>
+                                    <select name="provinsi" class="provinsi form-control"></select>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label col-md-2">ALAMAT</label>
-                                    <select name="kabupaten" class="form-control" type="text" id="kabupaten">
+                                <div class="form-group formkab d-none">
+                                    <label class="form-label col-md-2">Kabupaten</label>
+                                    <select name="kabupaten" class="kabupaten form-control"></select>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label col-md-2">ALAMAT</label>
-                                    <select name="kecamatan" class="form-control" type="text" id="kecamatan">
+                                <div class="form-group formkec d-none">
+                                    <label class="form-label col-md-2">Kecamatan</label>
+                                    <select name="kecamatan" class="kecamatan form-control"></select>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label col-md-2">ALAMAT</label>
-                                    <select name="kelurahan" class="form-control" type="text" id="kelurahan">
+                                <div class="form-group formkel d-none">
+                                    <label class="form-label col-md-2">Kelurahan</label>
+                                    <select name="kelurahan" class="kelurahan form-control"></select>
                                 </div>
                         </div>
                         <div class="modal-footer">
