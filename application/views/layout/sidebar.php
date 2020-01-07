@@ -37,11 +37,20 @@
             <p>Nilai Siswa</p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="<?php echo base_url('guru/wali')?>" class="nav-link   <?php if($this->uri->segment(2)=="wali"){echo 'active';}?>">
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link   <?php if($this->uri->segment(2)=="wali"){echo 'active';}?>">
             <i class="nav-icon fas fa-users"></i>
             <p>Wali Kelas</p>
+              <i class="fas fa-angle-left right"></i>
           </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="pages/layout/top-nav.html" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Top Navigation</p>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <li class="nav-header">MISCELLANEOUS</li>
@@ -110,4 +119,3 @@
       </div>
     </div>
   </div>
-  <br>
