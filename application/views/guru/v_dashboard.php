@@ -1,3 +1,4 @@
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -105,6 +106,10 @@
                                 <div class="form-group">
                                     <label class="form-label col-md-2">ALAMAT</label>
                                     <input type="text" class="form-control" name="alamat" id="alamat" value="<?php echo $data_diri['alamat'] ?>">
+                                    <input type="text" id="provinsi">
+                                    <input type="text" id="kabupaten">
+                                    <input type="text" id="kecamatan">
+                                    <input type="text" id="kelurahan">
                                 </div>
                         </div>
                         <div class="modal-footer">

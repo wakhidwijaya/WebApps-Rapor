@@ -15,6 +15,9 @@
 <script>
 	$.widget.bridge('uibutton', $.ui.button)
 </script>
+
+<script src="http://api.iksgroup.co.id/apijs/lokasiapi.js"></script>
+
 <script src="<?php echo base_url() ?>assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="<?php echo base_url() ?>assets/adminlte/plugins/chart.js/Chart.min.js"></script>
 <script src="<?php echo base_url() ?>assets/adminlte/plugins/sparklines/sparkline.js"></script>
