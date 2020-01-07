@@ -16,12 +16,19 @@ class C_Siswa extends CI_Controller
     {
         $id_siswa =  $this->session->userdata('username');
         $data['siswa'] = $this->M_Siswa->get_siswa($id_siswa);
-        $data['nilai_chart'] = $this->M_Siswa->chart($id_siswa);
+        // $data['nilai_chart'] = $this->M_Siswa->chart($id_siswa);
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('siswa/v_dashboard', $data);
         // print_r($data);
         $this->load->view('layout/footer');
+    }
+
+    public function chart()
+    {
+        $id_siswa =  $this->session->userdata('username');
+        $data['nilai_chart'] = $this->M_Siswa->chart($id_siswa);
+        echo json_encode($data['nilai_chart']);
     }
 
     public function nilai()
@@ -34,15 +41,16 @@ class C_Siswa extends CI_Controller
         $this->load->view('layout/footer');
     }
 
-    // public function chart()
-    // {
-    //     $id_siswa =  $this->session->userdata('username');
-    //     $data['nilai_chart'] = $this->M_Siswa->chart($id_siswa);
-    //     $this->load->view('layout/header');
-    //     $this->load->view('layout/sidebar');
-    //     $this->load->view('siswa/v_dashboard', $data);
-    //     $this->load->view('layout/footer');
-    // }
+    public function jadwal()
+    {
+        $id_siswa =  $this->session->userdata('username');
+        $data['nilai_chart'] = $this->M_Siswa->chart($id_siswa);
+
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('guru/v_jadwal', $data);
+        $this->load->view('layout/footer');
+    }
 
     function edit($id)
     {

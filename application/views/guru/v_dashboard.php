@@ -1,4 +1,3 @@
-
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -76,20 +75,24 @@
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" action="<?php echo base_url('guru/edit/' . $data_diri['nip']) ?>" method="post">
-                               <div class="row">
-                                   <div class="form-group col-md-4">
-                                       <label class="form-label col-md-2">NIP</label>
-                                       <input type="text" class="form-control" value="<?php echo $data_diri['nip'] ?>" disabled>
-                                   </div>
-                                   <div class="form-group col-md-8">
-                                       <label class="form-label col-md-2">NAMA</label>
-                                       <input type="text" class="form-control" value="<?php echo $data_diri['nama']?>" disabled>
-                                   </div>
-                               </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label class="form-label col-md-2">NIP</label>
+                                        <input type="text" class="form-control" value="<?php echo $data_diri['nip'] ?>" disabled>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label class="form-label col-md-2">NAMA</label>
+                                        <input type="text" class="form-control" value="<?php echo $data_diri['nama'] ?>" disabled>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-4 form-group">
                                         <label class="form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" value="<?php if ($data_diri['jenis_kelamin'] = 0) {echo "Laki - Laki";} else {echo "Perempuan";} ?>" disabled>
+                                        <input type="text" class="form-control" value="<?php if ($data_diri['jenis_kelamin'] = 0) {
+                                                                                            echo "Laki - Laki";
+                                                                                        } else {
+                                                                                            echo "Perempuan";
+                                                                                        } ?>" disabled>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label class="form-label col-md-2">TTL</label>
@@ -103,13 +106,24 @@
 
                                 </div>
 
+                                <!--                                    <input type="text" class="form-control" name="alamat" id="alamat" value="--><?php //echo $data_diri['alamat'] 
+                                                                                                                                                    ?>
+                                <!--">-->
                                 <div class="form-group">
                                     <label class="form-label col-md-2">ALAMAT</label>
-                                    <input type="text" class="form-control" name="alamat" id="alamat" value="<?php echo $data_diri['alamat'] ?>">
-                                    <input type="text" id="provinsi">
-                                    <input type="text" id="kabupaten">
-                                    <input type="text" id="kecamatan">
-                                    <input type="text" id="kelurahan">
+                                    <select name="provinsi" class="form-control" type="text" id="provinsi">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label col-md-2">ALAMAT</label>
+                                    <select name="kabupaten" class="form-control" type="text" id="kabupaten">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label col-md-2">ALAMAT</label>
+                                    <select name="kecamatan" class="form-control" type="text" id="kecamatan">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label col-md-2">ALAMAT</label>
+                                    <select name="kelurahan" class="form-control" type="text" id="kelurahan">
                                 </div>
                         </div>
                         <div class="modal-footer">

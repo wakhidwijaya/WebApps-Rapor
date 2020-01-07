@@ -36,10 +36,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-	var render = createwidgetlokasi("provinsi", "kabupaten", "kecamatan", "kelurahan");
-});
-
-$(document).ready(function () {
 	// Set the date we're counting down to
 	var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
 
@@ -141,3 +137,61 @@ $(document).ready(function () {
 // 	 }
 //
 //
+
+// $.ajax({
+// 	type: "GET",
+// 	url: `${urlchart}/${kd}/${kelas}`, // echo php raiso neng file js
+// 	dataType: "JSON",
+// 	success: function (data) {
+// 		var html = '';
+// 		var i;
+// 		for (i = 0; i < data.length; i++) {
+// 			html += '<tr>' +
+// 				'<td>' + data[i].nis + '</td>' +
+// 				'<td>' + data[i].nama + '</td>' +
+// 				'<td width="12%">' +
+// 				'<input name="komda" value="' + kd + '" hidden>' +
+// 				'<input name="nilai[' + data[i].id_siswa + ']" style="width: 100%" type="number" value="' + data[i].nilai + '" max="100"></td>' +
+// 				'</tr>';
+// 		}
+// 		$('.datanilai').html(html);
+// 	}
+// });
+
+
+$(document).ready(function () {
+	var lbl = [];
+	var dat = [];
+	$.ajax({
+		url: `${urlchart}`,
+		type: "GET",
+		dataType: "json",
+		success: function (data) {
+			$.each(data, function (key, value) {
+				lbl.push(value.kd);
+				dat.push(value.nilai);
+			})
+			var myJSON = JSON.stringify(lbl);
+			var xyz = lbl;
+			var dat1 = dat;
+			var ctx = $('#myChart');
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: xyz,
+					datasets: [{
+						label: "My First dataset",
+						backgroundColor: "rgba(38, 185, 154, 0.31)",
+						borderColor: "rgba(38, 185, 154, 0.7)",
+						pointBorderColor: "rgba(38, 185, 154, 0.7)",
+						pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+						pointHoverBackgroundColor: "#fff",
+						pointHoverBorderColor: "rgba(220,220,220,1)",
+						pointBorderWidth: 1,
+						data: dat1
+					}]
+				},
+			});
+		}
+	});
+});

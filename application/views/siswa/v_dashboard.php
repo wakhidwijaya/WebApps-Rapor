@@ -1,5 +1,5 @@
 <!-- Main content -->
-<section class="content">
+<section class="content mb-5">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 offset-2">
@@ -105,63 +105,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 offset-2">
-                <p>
-                    <div class="chartjs-wrapper"><canvas id="chartjs-1" class="chartjs" width="undefined" height="undefined"></canvas>
-                        <script>
-                            new Chart(document.getElementById("chartjs-1"), {
-                                "type": "bar",
-                                "data": {
-                                    "labels ": [<?php
-                                                foreach ($nilai_chart as $nilaichart) {
-                                                    echo json_encode($nilaichart['kd']); // you can also use $row if you don't use keys                  
-                                                }
-                                                ?>],
-                                    "datasets": [{
-                                        "label": "My First Dataset",
-                                        "data": [<?php
-                                                    foreach ($nilai_chart as $nilaichart) {
-                                                        echo "'" . $nilaichart['nilai'] . "', "; // you can also use $row if you don't use keys                  
-                                                    }
-                                                    ?>],
-                                        "fill": false,
-                                        "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
-                                        "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
-                                        "borderWidth": 1
-                                    }]
-                                },
-                                "options": {
-                                    "scales": {
-                                        "yAxes": [{
-                                            "ticks": {
-                                                "beginAtZero": true
-                                            }
-                                        }]
-                                    }
-                                }
-                            });
-                        </script>
-                        <script>
-                            const urlchart = '<?= base_url('siswa/rombel/nilai') ?>';
-                        </script>
-                        <!-- <script src="http://api.iksgroup.co.id/apijs/lokasiapi.js"></script>
-                        <script>
-                            $(document).ready(function() {
-                                var render = createwidgetlokasi("provinsi", "kabupaten", "kecamatan", "kelurahan");
-                            });
-                        </script>
-                        <button type="button" id="show">GET DATA JSON</button>
-                        <div id="output"></div>
-                        <script>
-                            $(document).ready(function() {
-                                $("#show").click(function() {
-                                    $("#output").html(trackdatalokasi);
-                                });
-                            });
-                        </script> -->
-                    </div>
-                </p>
+                <h4 class="mb-3">Chart Nilai Siswa</h4>
+                <canvas id="myChart" width="400" height="210"></canvas>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -169,3 +117,6 @@
 
 </div>
 <!-- /.content-wrapper -->
+<script>
+    const urlchart = '<?= base_url('siswa/chart') ?>';
+</script>

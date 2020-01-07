@@ -20,37 +20,45 @@
                                 } ?>">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="<?php echo base_url() ?>" class="nav-link <?php if($this->uri->segment(2)==""){echo 'active';}?>">
+          <a href="<?php echo base_url() ?>" class="nav-link <?php if ($this->uri->segment(2) == "") {
+                                                                echo 'active';
+                                                              } ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo base_url('guru/jadwal')?>" class="nav-link   <?php if($this->uri->segment(2)=="jadwal"){echo 'active';}?>">
+          <a href="<?php echo base_url('guru/jadwal') ?>" class="nav-link   <?php if ($this->uri->segment(2) == "jadwal") {
+                                                                              echo 'active';
+                                                                            } ?>">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>Jadwal Mengajar</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo base_url('guru/rombel') ?>" class="nav-link  <?php if($this->uri->segment(2)=="rombel"){echo 'active';}?>">
+          <a href="<?php echo base_url('guru/rombel') ?>" class="nav-link  <?php if ($this->uri->segment(2) == "rombel") {
+                                                                              echo 'active';
+                                                                            } ?>">
             <i class="nav-icon fas fa-list-ul"></i>
             <p>Nilai Siswa</p>
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link   <?php if($this->uri->segment(2)=="wali"){echo 'active';}?>">
+          <a href="#" class="nav-link   <?php if ($this->uri->segment(2) == "wali") {
+                                          echo 'active';
+                                        } ?>">
             <i class="nav-icon fas fa-users"></i>
             <p>Wali Kelas</p>
-              <i class="fas fa-angle-left right"></i>
+            <i class="fas fa-angle-left right"></i>
           </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="pages/layout/top-nav.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Top Navigation</p>
-                    </a>
-                </li>
-            </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="pages/layout/top-nav.html" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Top Navigation</p>
+              </a>
+            </li>
+          </ul>
         </li>
 
         <li class="nav-header">MISCELLANEOUS</li>
@@ -67,19 +75,25 @@
                                 } ?>">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="<?php echo base_url() ?>" class="nav-link active">
+          <a href="<?php echo base_url() ?>" class="nav-link <?php if ($this->uri->segment(2) == "") {
+                                                                echo 'active';
+                                                              } ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+          <a href="<?php echo base_url('siswa/jadwal') ?>" class="nav-link <?php if ($this->uri->segment(2) == "jadwal") {
+                                                                              echo 'active';
+                                                                            } ?>">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>Jadwal Sekolah</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo base_url('siswa/nilai') ?>" class="nav-link">
+          <a href="<?php echo base_url('siswa/nilai') ?>" class="nav-link <?php if ($this->uri->segment(2) == "nilai") {
+                                                                            echo 'active';
+                                                                          } ?>">
             <i class="nav-icon fas fa-list-ul"></i>
             <p>Nilai</p>
           </a>
