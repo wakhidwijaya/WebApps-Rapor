@@ -54,7 +54,7 @@ class M_Guru extends CI_Model
             END as rangenilai,
             COUNT(1) as countt
             FROM tb_nilai
-            WHERE id_kd = 405
+            WHERE id_kd = '.$kd.'
             GROUP BY rangenilai');
         return $query->result_array();
     }

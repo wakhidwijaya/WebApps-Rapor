@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-//v_nilai guru
-=======
+
 $(document).ready(function () {
 	$('#editguru').click(function (ev) {
 		$.ajax({
@@ -67,7 +65,7 @@ $(document).ready(function () {
 
 });
 
->>>>>>> 3b4194d0da260c0af8bfc55062d5938f90fb1f55
+
 $(document).ready(function () {
 	$('.lihatnilai').click(function (ev) {
 		ev.preventDefault();
@@ -299,6 +297,7 @@ $(document).ready(function () {
 						pointBorderWidth: 1,
 						data: dat1
 					}]
+
 				},
 			});
 		}
