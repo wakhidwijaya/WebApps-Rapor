@@ -423,3 +423,74 @@ $(document).ready(function () {
     });
   });
 });
+
+
+$(document).ready(function () {
+  $('#editsiswa').click(function (ev) {
+    $.ajax({
+      type: "GET",
+      url: "http://dev.farizdotid.com/api/daerahindonesia/provinsi",
+      dataType: "JSON",
+      success: function (data) {
+        var html = '';
+        var i;
+        for (i = 0; i < data.semuaprovinsi.length; i++) {
+          html += '<option value=' + data.semuaprovinsi[i].id + '>' + data.semuaprovinsi[i].nama + '</option>';
+        }
+        $('.provinsi').html(html);
+      }
+    });
+  });
+  $('.provinsi').change(function (ev) {
+    $('.formkab').removeClass('d-none');
+    var id = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/' + id + '/kabupaten',
+      dataType: "JSON",
+      success: function (data) {
+        var html = '';
+        var i;
+        for (i = 0; i < data.kabupatens.length; i++) {
+          html += '<option value=' + data.kabupatens[i].id + '>' + data.kabupatens[i].nama + '</option>';
+        }
+        $('.kabupaten').html(html);
+      }
+    });
+  })
+  $('.kabupaten').change(function (ev) {
+    $('.formkec').removeClass('d-none');
+    var id = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/' + id + '/kecamatan',
+      dataType: "JSON",
+      success: function (data) {
+        var html = '';
+        var i;
+        for (i = 0; i < data.kecamatans.length; i++) {
+          html += '<option value=' + data.kecamatans[i].id + '>' + data.kecamatans[i].nama + '</option>';
+        }
+        $('.kecamatan').html(html);
+      }
+    });
+  })
+  $('.kecamatan').change(function (ev) {
+    $('.formkel').removeClass('d-none');
+    var id = $(this).val();
+    $.ajax({
+      type: "GET",
+      url: 'http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/kecamatan/' + id + '/desa',
+      dataType: "JSON",
+      success: function (data) {
+        var html = '';
+        var i;
+        for (i = 0; i < data.desas.length; i++) {
+          html += '<option value=' + data.desas[i].id + '>' + data.desas[i].nama + '</option>';
+        }
+        $('.kelurahan').html(html);
+      }
+    });
+  })
+
+});

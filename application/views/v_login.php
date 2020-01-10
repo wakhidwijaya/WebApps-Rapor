@@ -16,54 +16,54 @@
                 <div class="col-md-8 offset-2 my-auto">
                     <div class="card card-custom mb-3">
                         <div class="card-body row">
-                                <div class="col-md-6">
-                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div class="carousel-caption text-dark">
-                                                    <p>FITUR</p>
-                                                    <p>Login Siswa</p>
-                                                    <p>Cek Data Diri</p>
-                                                    <p>Cek Nilai</p>
-                                                    <p>Cek Jadwal Pelajaran</p>
-                                                    <p>Chart Nilai</p>
-                                                </div>
+                            <div class="col-md-6">
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="carousel-caption text-dark">
+                                                <p>FITUR</p>
+                                                <p>Login Siswa</p>
+                                                <p>Cek Data Diri</p>
+                                                <p>Cek Nilai</p>
+                                                <p>Cek Jadwal Pelajaran</p>
+                                                <p>Chart Nilai</p>
                                             </div>
-                                            <div class="carousel-item">
-                                                <div class="carousel-caption text-dark">
-                                                    <p>Login Guru</p>
-                                                    <p>Cek Data Diri</p>
-                                                    <p>Cek Nilai</p>
-                                                    <p>Cek Jadwal Mengajar</p>
-                                                    <p>Update Delete Materi</p>
-                                                </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="carousel-caption text-dark">
+                                                <p>Login Guru</p>
+                                                <p>Cek Data Diri</p>
+                                                <p>Cek Nilai</p>
+                                                <p>Cek Jadwal Mengajar</p>
+                                                <p>Update Delete Materi</p>
                                             </div>
-                                            <div class="carousel-item">
-                                                <div class="carousel-caption text-dark">
-                                                    <p>Update Nilai Siswa</p>
-                                                    <p>Report Tiap kelas</p>
-                                                    <p>Chart Nilai tiap kelas</p>
-                                                    <p>Wali Kelas</p>
-                                                    <p>rapor siswa kelas</p>
-                                                </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="carousel-caption text-dark">
+                                                <p>Update Nilai Siswa</p>
+                                                <p>Report Tiap kelas</p>
+                                                <p>Chart Nilai tiap kelas</p>
+                                                <p>Wali Kelas</p>
+                                                <p>rapor siswa kelas</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <h3 class="card-title text-center mb-3 text-dark">SMP N INDONESIA</h2>
-                                        <form method="post" action="<?php echo base_url("login") ?>" class="form-custom mt-4">
-                                            <div class="form-label-group">
-                                                <input type="text" id="inputuName" class="form-control" placeholder="username" name="username">
-                                                <label for="inputuName">Username</label>
-                                            </div>
-                                            <div class="form-label-group">
-                                                <input type="password" id="inputPassword" class="form-control mt-3" placeholder="Password" name="password">
-                                                <label for="inputPassword">Password</label>
-                                            </div>
-                                            <input type="submit" class="btn btn-block bg-dark text-white mt-5" value="LOGIN">
-                                        </form>
-                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="card-title text-center mb-3 text-dark">SMP N INDONESIA</h2>
+                                    <form method="post" action="<?php echo base_url("login") ?>" class="form-custom mt-4">
+                                        <div class="form-label-group">
+                                            <input type="text" id="inputuName" class="form-control" placeholder="username" name="username">
+                                            <label for="inputuName">Username</label>
+                                        </div>
+                                        <div class="form-label-group">
+                                            <input type="password" id="inputPassword" class="form-control mt-3" placeholder="Password" name="password">
+                                            <label for="inputPassword">Password</label>
+                                        </div>
+                                        <input type="submit" class="btn btn-block bg-dark text-white mt-5" value="LOGIN">
+                                    </form>
+                            </div>
                         </div>
                     </div>
                 </div>

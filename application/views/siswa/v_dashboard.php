@@ -29,7 +29,7 @@
                         <?php } ?>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalScrollable">
+                        <button type="submit" id="editsiswa" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalScrollable">
                             EDIT
                         </button>
                     </div>
@@ -62,30 +62,26 @@
                                         <label class="form-label col-md-2">TTL</label>
                                         <input type="text" class="form-control" value=" <?php echo $data_siswa['tempat_lahir'] . "&emsp;" . "/" . "&emsp;" . $data_siswa['tanggal_lahir'] ?>    " disabled>
                                     </div>
-                                    <!-- <div class="form-group row">
+                                    <div class="form-group">
                                         <label class="form-label col-md-2">Provinsi</label>
-                                        <select class="form-control" id="provinsi" name="provinsi">
+                                        <select name="provinsi" class="provinsi form-control"></select>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="form-group formkab d-none">
                                         <label class="form-label col-md-2">Kabupaten</label>
-                                        <select class="form-control" id="kabupaten" name="kabupaten">
+                                        <select name="kabupaten" class="kabupaten form-control"></select>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="form-group formkec d-none">
                                         <label class="form-label col-md-2">Kecamatan</label>
-                                        <select class="form-control" id="kecamatan" name="kecamatan">
+                                        <select name="kecamatan" class="kecamatan form-control"></select>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="form-group formkel d-none">
                                         <label class="form-label col-md-2">Kelurahan</label>
-                                        <select class="form-control" id="kelurahan" name="kelurahan">
+                                        <select name="kelurahan" class="kelurahan form-control"></select>
                                     </div>
-
-
-                                    <div id="output"></div> -->
-
-                                    <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                         <label class="form-label col-md-2">Alamat</label>
                                         <input type="text" class="form-control" name="alamat" id="alamat" value="<?php echo $data_siswa['alamat'] ?>">
-                                    </div>
+                                    </div> -->
                             </div>
                             <div class="modal-footer">
                                 <!-- <button type="submit" class="btn btn-primary" data-dismiss="modal">Simpan</button> -->
