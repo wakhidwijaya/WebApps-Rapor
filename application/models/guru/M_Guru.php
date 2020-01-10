@@ -124,4 +124,19 @@ class M_Guru extends CI_Model
         $query = $this->db->query("SELECT id_kelas FROM `tb_materi` WHERE nip IN (".implode(',', array_map('intval', $nip)).") AND id_kelas IN (".implode(',', array_map('intval', $kelas)).")");
         return $query->result_array();
     }
+    function datanilai($kelas, $nip){
+        $query = $this->db->query('
+        SELECT tn.id_siswa, ts.nama, tk.kelas
+        FROM tb_nilai as tn, tb_siswa as ts, tb_kelas as tk
+        WHERE tn.id_siswa = ts.nis AND ts.kelas = tk.id_kelas AND tk.id_kelas = '.$kelas.'
+        AND tn.id_kd IN (SELECT id_kd FROM tb_materi WHERE nip = '.$nip.') GROUP BY ts.nis');
+        return $query->result_array();
+    }
+    function report($kelas, $nip){
+        $query = $this->db->query('
+        SELECT ts.nis,tn.nilai, tn.id_kd, tm.status
+        FROM tb_nilai AS tn, tb_siswa as ts, tb_kelas as tk, tb_materi as tm
+        WHERE ts.kelas = '.$kelas.' AND tn.id_siswa = ts.nis AND ts.kelas = tk.id_kelas AND tm.nip = '.$nip.' AND tm.id_kd = tn.id_kd');
+        return $query->result_array();
+    }
 }

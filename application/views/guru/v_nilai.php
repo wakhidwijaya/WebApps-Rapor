@@ -1,6 +1,16 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-12">
+                <div class="mb-3 row">
+                    <div class="col-6">
+                        <a href="<?php echo base_url('guru/rombel')?>" class="btn btn-warning text-light"><i class="fas fa-arrow-left"></i> KEMBALI</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="<?php echo base_url('guru/rombel/nilai/report/').$kelas ?>" class="float-right btn btn-success"><i class="far fa-file"></i> REPORT</a>
+                    </div>
+                </div>
+            </div>
             <div class="col-4">
                 <div class="card bg-light">
                     <div class="card-header">
