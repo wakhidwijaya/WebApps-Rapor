@@ -16,15 +16,15 @@
                         <div class="col-8">
                             <?php foreach ($datadiri as $data_diri) { ?>
                                 <div class="form-group row">
-                                    <label class="form-label col-3">NIP</label>
+                                    <label class="form-label col-4">NIP</label>
                                     <?php echo $data_diri['nip'] ?>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-label col-3">Nama</label>
+                                    <label class="form-label col-4">Nama</label>
                                     <?php echo $data_diri['nama'] ?>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-label col-3">Jenis Kelamin</label>
+                                    <label class="form-label col-4">Jenis Kelamin</label>
                                     <?php if ($data_diri['jenis_kelamin'] = 0) {
                                         echo "Laki - Laki";
                                     } else {
@@ -33,16 +33,16 @@
                                     ?>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-label col-3">Alamat</label>
+                                    <label class="form-label col-4">Alamat</label>
                                     <?php echo $data_diri['alamat'] ?>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-label col-3">TTL</label>
+                                    <label class="form-label col-4">TTL</label>
                                     <?php echo $data_diri['tempat_lahir'] ?>,
                                     <?php echo date('d F Y', strtotime($data_diri['tanggal_lahir'])) ?>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-label col-3">Mata Pelajaran</label>
+                                    <label class="form-label col-4">Mata Pelajaran</label>
                                     <?php echo $data_diri['mapel'] ?>
                                 </div>
                             <?php } ?>
@@ -53,25 +53,27 @@
 
             <div class="col-4">
                 <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">CPU Traffic</span>
+                        <span class="info-box-text">Siswa Yang diampu</span>
                         <span class="info-box-number">
-                  10
-                  <small>%</small>
-                </span>
+                          <?php echo count($datasiswa)?>
+                          <small> Siswa</small>
+                        </span>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
-                <div class="info-box bg-info">
-                    Info
-                </div>
-                <div class="info-box bg-danger">
-                    <div class="">
-                        <small class="text-bold">Today Schedule</small>
-                        Mengajar
-                        Kelas 8A
+                <div class="info-box">
+                    <span class="info-box-icon bg-warning elevation-1"><i class="text-light fas fa-chalkboard-teacher"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Wali Kelas</span>
+                        <span class="info-box-number">
+                          <span>Kelas</span>
+                          <?php
+                           foreach ($datakelas as $kelas){
+                               echo $kelas['kelas'];
+                           }
+                          ?>
+                        </span>
                     </div>
                 </div>
             </div>

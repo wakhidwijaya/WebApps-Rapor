@@ -18,6 +18,10 @@ class C_Guru extends CI_Controller
     {
         $id_guru =  $this->session->userdata('username');
         $data['datadiri'] = $this->M_Guru->datadiri($id_guru);
+        $data['datasiswa'] = $this->M_Guru->jmlsiswa($id_guru);
+        $data['datakelas'] = $this->M_Guru->jmlkelas($id_guru);
+        $data['datanilai'] = json_encode($this->M_Guru->chartnilai($id_guru));
+
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('guru/v_dashboard', $data);

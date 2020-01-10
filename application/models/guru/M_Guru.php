@@ -11,6 +11,31 @@ class M_Guru extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    function jmlsiswa($nip){
+        $query = $this->db->query('
+        SELECT tn.id_siswa, ts.kelas
+        FROM `tb_nilai` tn, tb_siswa ts
+        WHERE tn.id_siswa = ts.nis AND id_kd IN
+        (SELECT id_kd FROM tb_materi WHERE nip = '.$nip.')  
+        GROUP BY id_siswa');
+        return $query->result_array();
+    }
+    function jmlkelas($nip){
+        $query = $this->db->query('
+        SELECT kelas
+        FROM tb_kelas 
+        WHERE id_kelas = 
+        (SELECT kelas FROM `tb_siswa` WHERE wali_kelas = 
+        (SELECT id_guru FROM tb_guru WHERE nip = '.$nip.') GROUP BY kelas)');
+        return $query->result_array();
+    }
+    function chartnilai($nip){
+        $query = $this->db->query('
+        SELECT ts.nis,tn.nilai, tn.id_kd, tm.status
+        FROM tb_nilai AS tn, tb_siswa as ts, tb_kelas as tk, tb_materi as tm
+        WHERE tn.id_siswa = ts.nis AND ts.kelas = tk.id_kelas AND tm.nip = '.$nip.' AND tm.id_kd = tn.id_kd');
+        return $query->result_array();
+    }
     function rombel($where)
     {
         $this->db->select('tk.kelas, tk.id_kelas, tm.mapel, tg.nama');
