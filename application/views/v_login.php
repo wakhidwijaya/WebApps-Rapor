@@ -13,57 +13,55 @@
     <body id="bg-login">
         <div class="container">
             <div class="row h-100">
-                <div class="col-md-8 offset-2 my-auto">
-                    <div class="card card-custom mb-3">
-                        <div class="card-body row">
-                            <div class="col-md-6">
+                <div class="col-md-10 offset-1 my-auto">
+                    <div class="row">
+                        <div class="col-md-7 my-auto card-custom-left">
+                            <h3 class="card-title text-center mb-5 mt-5 text-white">FITUR</h2>
                                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <div class="carousel-caption text-dark">
-                                                <p>FITUR</p>
+                                            <blockquote class="text-center">
                                                 <p>Login Siswa</p>
                                                 <p>Cek Data Diri</p>
                                                 <p>Cek Nilai</p>
                                                 <p>Cek Jadwal Pelajaran</p>
                                                 <p>Chart Nilai</p>
-                                            </div>
+                                            </blockquote>
                                         </div>
                                         <div class="carousel-item">
-                                            <div class="carousel-caption text-dark">
+                                            <blockquote class="text-center">
                                                 <p>Login Guru</p>
                                                 <p>Cek Data Diri</p>
                                                 <p>Cek Nilai</p>
                                                 <p>Cek Jadwal Mengajar</p>
                                                 <p>Update Delete Materi</p>
-                                            </div>
+                                            </blockquote>
                                         </div>
                                         <div class="carousel-item">
-                                            <div class="carousel-caption text-dark">
+                                            <blockquote class="text-center">
                                                 <p>Update Nilai Siswa</p>
                                                 <p>Report Tiap kelas</p>
                                                 <p>Chart Nilai tiap kelas</p>
                                                 <p>Wali Kelas</p>
                                                 <p>rapor siswa kelas</p>
-                                            </div>
+                                            </blockquote>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <h3 class="card-title text-center mb-3 text-dark">SMP N INDONESIA</h2>
-                                    <form method="post" action="<?php echo base_url("login") ?>" class="form-custom mt-4">
-                                        <div class="form-label-group">
-                                            <input type="text" id="inputuName" class="form-control" placeholder="username" name="username">
-                                            <label for="inputuName">Username</label>
-                                        </div>
-                                        <div class="form-label-group">
-                                            <input type="password" id="inputPassword" class="form-control mt-3" placeholder="Password" name="password">
-                                            <label for="inputPassword">Password</label>
-                                        </div>
-                                        <input type="submit" class="btn btn-block bg-dark text-white mt-5" value="LOGIN">
-                                    </form>
-                            </div>
+                        </div>
+                        <div class="col-md-5 bg-white card-custom-right">
+                            <h3 class="card-title text-center mb-3 mt-5 text-dark">SMP N INDONESIA</h2>
+                                <form method="post" action="<?php echo base_url("login") ?>" class="form-custom mt-4">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputuName" class="form-control" placeholder="username" name="username">
+                                        <label for="inputuName">Username</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="password" id="inputPassword" class="form-control mt-3" placeholder="Password" name="password">
+                                        <label for="inputPassword">Password</label>
+                                    </div>
+                                    <input type="submit" class="btn btn-block bg-dark text-white mt-5" value="LOGIN">
+                                </form>
                         </div>
                     </div>
                 </div>

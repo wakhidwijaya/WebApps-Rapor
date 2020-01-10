@@ -361,10 +361,9 @@ $(document).ready(function () {
       onrendered: function (canvas) {
         var data = canvas.toDataURL();
         var docDefinition = {
-          pageSize : 'A4',
-          pageOrientation : 'landscape',
-          content: [
-              {
+          pageSize: 'A4',
+          pageOrientation: 'landscape',
+          content: [{
             image: data,
             width: 700
           }]
@@ -406,7 +405,7 @@ $(document).ready(function () {
           data: {
             labels: xyz,
             datasets: [{
-              label: "My First dataset",
+              label: "Chart Nilai Siswa",
               backgroundColor: "rgba(38, 185, 154, 0.31)",
               borderColor: "rgba(38, 185, 154, 0.7)",
               pointBorderColor: "rgba(38, 185, 154, 0.7)",
