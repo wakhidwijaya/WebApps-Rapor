@@ -4,10 +4,10 @@
             <div class="col-12">
                 <div class="mb-3 row">
                     <div class="col-6">
-                        <a href="<?php echo base_url('guru/rombel')?>" class="btn btn-warning text-light"><i class="fas fa-arrow-left"></i> KEMBALI</a>
+                        <a href="<?php echo base_url('guru/rombel') ?>" class="btn btn-warning text-light"><i class="fas fa-arrow-left"></i> KEMBALI</a>
                     </div>
                     <div class="col-6">
-                        <a href="<?php echo base_url('guru/rombel/nilai/report/').$kelas ?>" class="float-right btn btn-success"><i class="far fa-file"></i> REPORT</a>
+                        <a href="<?php echo base_url('guru/rombel/nilai/report/') . $kelas ?>" class="float-right btn btn-success"><i class="far fa-file"></i> REPORT</a>
                     </div>
                 </div>
             </div>
@@ -23,11 +23,11 @@
                         <ul class="list-group">
                             <?php foreach ($kd as $data_kd) { ?>
                                 <li class="list-group-item">
-                                    <a class="lihatnilai" href="#" data-namakd="<?php echo $data_kd['kd']?>" data-kd="<?php echo $data_kd['id_kd'] ?>" data-kelas="<?php echo $data_kd['id_kelas'] ?>">
+                                    <a class="lihatnilai" href="#" data-namakd="<?php echo $data_kd['kd'] ?>" data-kd="<?php echo $data_kd['id_kd'] ?>" data-kelas="<?php echo $data_kd['id_kelas'] ?>">
                                         <i class="fa fa-chevron-right"> </i> <?php echo $data_kd['kd'] ?>
                                     </a>
-                                    <?php if ($data_kd['status'] == 0){
-                                        echo '<a href="'.base_url('guru/rombel/hapuskd/').$data_kd['id_kd'].'/'.$data_kd['id_kelas'].'" class="float-right text-danger"><i class="far fa-times-circle"></i></a>';
+                                    <?php if ($data_kd['status'] == 0) {
+                                        echo '<a href="' . base_url('guru/rombel/hapuskd/') . $data_kd['id_kd'] . '/' . $data_kd['id_kelas'] . '" class="float-right text-danger"><i class="far fa-times-circle"></i></a>';
                                     } ?>
                                 </li>
                             <?php } ?>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card bg-light d-none" id="chartpiekd">
                     <div class="card-header">
-                        <span class="h5 font-weight-bold">Grafik Nilai</span><br/>
+                        <span class="h5 font-weight-bold">Grafik Nilai</span><br />
                         <small id="kdname"></small>
                     </div>
                     <div class="card-body">
@@ -50,13 +50,13 @@
                         <span class="h5 font-weight-bold">Input Nilai - <small id="kd" class="d-none"></small></span>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="<?= base_url('guru/rombel/nilai/simpan')?>">
+                        <form method="post" action="<?= base_url('guru/rombel/nilai/simpan') ?>">
                             <table class="table table-condensed table-bordered table-hover table-sm">
-                                    <tr>
-                                        <th>NIS</th>
-                                        <th>NAMA</th>
-                                        <th>NILAI</th>
-                                    </tr>
+                                <tr>
+                                    <th>NIS</th>
+                                    <th>NAMA</th>
+                                    <th>NILAI</th>
+                                </tr>
                                 </thead>
                                 <tbody class="datanilai">
                                 </tbody>
@@ -80,10 +80,10 @@
                     </button>
                 </div>
                 <div class="modal-body mx-3">
-                    <form method="post" action="<?php echo base_url('guru/rombel/addkd')?>">
-                        <input name="nip" type="hidden" class="form-control" value="<?php echo $data_kd['nip'] ?>" >
-                        <input name="kelas" type="hidden" class="form-control" value="<?php echo $data_kd['id_kelas'] ?>" >
-                        <input name="status" type="hidden" class="form-control" value="0" >
+                    <form method="post" action="<?php echo base_url('guru/rombel/addkd') ?>">
+                        <input name="nip" type="hidden" class="form-control" value="<?php echo $data_kd['nip'] ?>">
+                        <input name="kelas" type="hidden" class="form-control" value="<?php echo $data_kd['id_kelas'] ?>">
+                        <input name="status" type="hidden" class="form-control" value="0">
                         <div class="form-group row">
                             <input id="input_kd" name="kd" type="text" class="form-control" placeholder="Keterangan KD">
                         </div>
