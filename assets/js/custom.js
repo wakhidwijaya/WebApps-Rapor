@@ -355,6 +355,27 @@ $(document).ready(function () {
 // });
 
 $(document).ready(function () {
+  $('#btnexport').click(function (ev) {
+    ev.preventDefault();
+    html2canvas($('#reportkelas'), {
+      onrendered: function (canvas) {
+        var data = canvas.toDataURL();
+        var docDefinition = {
+          pageSize : 'A4',
+          pageOrientation : 'landscape',
+          content: [
+              {
+            image: data,
+            width: 700
+          }]
+        };
+        pdfMake.createPdf(docDefinition).open();
+      }
+    });
+  })
+
+});
+$(document).ready(function () {
   function getRandomColor() {
     var r = Math.floor(Math.random() * 255);
     var g = Math.floor(Math.random() * 255);

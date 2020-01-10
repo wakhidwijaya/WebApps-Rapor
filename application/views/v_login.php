@@ -15,8 +15,7 @@
             <div class="row h-100">
                 <div class="col-md-8 offset-2 my-auto">
                     <div class="card card-custom mb-3">
-                        <div class="card-body">
-                            <div class="row">
+                        <div class="card-body row">
                                 <div class="col-md-6">
                                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
@@ -65,7 +64,6 @@
                                             <input type="submit" class="btn btn-block bg-dark text-white mt-5" value="LOGIN">
                                         </form>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
