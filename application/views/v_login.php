@@ -13,12 +13,31 @@
     <body id="bg-login">
         <div class="container">
             <div class="row h-100">
-                <div class="col-md-4 offset-md-4 my-auto">
-                    <div class="card text-white bg-info mb-3">
-                        <div class="card-header mx-auto">
-                            <h2>SMP N INDONESIA</h2>
+                <div class="col-md-5 mx-auto my-auto">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="carousel-caption">
+                                    <p>sdasd</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="carousel-caption">
+                                    <p>sdasgbergerg</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="carousel-caption">
+                                    <p>nfgdfdsffasd</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
+                    </div>
+                </div>
+                <div class="col-md-4 mx-auto my-auto">
+                    <div class="card text-white card-style mb-3">
+                        <div class="card-body card-body">
+                            <h2 class="text-center mb-2 text-dark">SMP N INDONESIA</h2>
                             <form method="post" action="<?php echo base_url("login") ?>">
                                 <div class="form-group">
                                     <label>Username</label>
@@ -33,9 +52,8 @@
                         </div>
                     </div>
                     <?php
-                        if($this->session->flashdata('errormsg')){
-
-                        }
+                    if ($this->session->flashdata('errormsg')) {
+                    }
                     ?>
 
                     <div class="modal fade in" id="modalerror" tabindex="-1" role="dialog">
@@ -47,9 +65,10 @@
                             </div>
                         </div>
                     </div>
-                    <?php if($this->session->flashdata('errormsg')){ ?>
+                    <?php if ($this->session->flashdata('errormsg')) { ?>
                         <div class="card bg-danger text-light p-2 text-center">
-                                <?php echo $this->session->flashdata('errormsg'); // Tampilkan pesannya ?>
+                            <?php echo $this->session->flashdata('errormsg'); // Tampilkan pesannya 
+                            ?>
                         </div>
                     <?php } ?>
                 </div>
