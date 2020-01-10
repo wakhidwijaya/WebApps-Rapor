@@ -1,29 +1,40 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="mb-2">
-                <a href="<?php echo base_url('guru/rombel/nilai/').$kelas?>"  class="btn btn-warning text-light"><i class="fas fa-arrow-left"></i> KEMBALI</a>
+            <div class="mb-2 col-12">
+                <div class="col-6 d-inline">
+                    <a href="<?php echo base_url('guru/rombel/nilai/').$kelas?>"  class="float-left btn btn-warning btn-sm text-light"><i class="fas fa-arrow-left"></i> KEMBALI</a>
+                </div>
+                <div class="col-6 d-inline">
+                    <a href="#" class="float-right btn btn-sm btn-danger" id="btnexport"><i class="fas fa-file-pdf""></i> Export PDF</a>
+                </div>
             </div>
-            <table class="table table-sm table-bordered text-center">
+            <table id="reportkelas" class="table table-sm table-bordered text-center">
                 <tr>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2">NIM</th>
-                    <th rowspan="2">Nama</th>
-                    <th rowspan="2">Kelas</th>
-                    <th colspan="<?php if (count($kd) > 2){ echo count($kd)+1;} else {echo count($kd);} ?>">Nilai</th>
-                    <th rowspan="2">ket</th>
+                    <th rowspan="3" class="align-middle">No</th>
+                    <th rowspan="3" class="align-middle">NIM</th>
+                    <th rowspan="3" class="align-middle">Nama</th>
+                    <th rowspan="3" class="align-middle">Kelas</th>
+                    <th colspan="<?php if (count($kd) > 2){ echo count($kd)+2;} else {echo count($kd)+1;} ?>" class="align-middle">Nilai</th>
+                    <th rowspan="3"class="align-middle">ket</th>
                 </tr>
+                    <tr>
+                <?php if (count($kd) > 2){ ?>
+                        <th colspan="<?php echo count($kd)-2?>">Kompetensi Dasar</th>
+                <?php }?>
+                        <?php if (count($kd) > 2){?>
+                            <th rowspan="2" class="align-middle">AVG KD</th>
+                        <?php } ?>
+                        <th rowspan="2" class="align-middle">UTS</th>
+                        <th rowspan="2" class="align-middle">UAS</th>
+                        <th rowspan="2" class="align-middle">Nilai Akhir</th>
+                    </tr>
                 <tr>
                     <?php for ($i = 1; $i <= count($kd)-2; $i++){ ?>
-                        <td>KD <?php echo $i?></td>
+                        <th>KD <?php echo $i?></th>
                     <?php } ?>
-                    <?php if (count($kd) > 2){?>
-                        <td>AVG KD</td>
-                    <?php } ?>
-                    <td>UTS</td>
-                    <td>UAS</td>
                 </tr>
-                <?php $totalkd = array(); $totaluts = array(); $totaluas = array(); $i = 1; foreach ($datanilai as $siswa){?>
+                <?php $totalkd = array(); $totaluts = array(); $totaluas = array(); $nilaiakhirr=array(); $i = 1; foreach ($datanilai as $siswa){?>
                     <tr>
                         <td><?php echo $i++?></td>
                         <td><?php echo $siswa['id_siswa']?></td>
@@ -40,27 +51,63 @@
                                     array_push($ujian, $nilai['nilai']);
                                     array_push($totaluas, $nilai['nilai']);
                                 }
-                                array_push($totalkd, array_sum($arraykd));
                             }
                         }
                          if ($arraykd != null){
                             foreach ($arraykd as $kdnilai){
                                 echo '<td>'.$kdnilai.'</td>';
                             }
-                        echo '<td>'.array_sum($arraykd)/count($arraykd).'</td>';
+                            array_push($totalkd,  array_sum($arraykd));
+                        echo '<td>'.number_format(array_sum($arraykd)/count($arraykd), 1).'</td>';
                         }?>
                         <?php foreach ($ujian as $nilaiujian){ ?>
                             <td><?php echo $nilaiujian ?></td>
                         <?php } ?>
+                        <td><?php echo$nilaiakhir = number_format((array_sum($arraykd)+array_sum($ujian))/3, 1) ?></td>
                         <td></td>
                     </tr>
-                <?php } ?>
-                    <tr>
-                        <td colspan="4">Total Nilai</td>
-                        <td><?php echo array_sum($totalkd) ?></td>
+                <?php array_push($nilaiakhirr, $nilaiakhir); } ?>
+                    <tr><td height="20px" colspan="<?php if (count($kd) > 2){echo count($kd)+7;}else{echo count($kd)+6;}?>"></td></tr>
+                    <tr class="font-weight-bold">
+                        <td colspan="<?php if (count($kd)>2){echo 4+count($kd)-2;}else{echo 4;} ?>">Total Nilai</td>
+                        <?php if (count($totalkd )!= null){
+                            echo '<td>'.array_sum($totalkd).'</td>';
+                        } ?>
                         <td><?php echo array_sum($totaluts) ?></td>
                         <td><?php echo array_sum($totaluas) ?></td>
+                        <td><?php echo number_format((array_sum($totalkd)+array_sum($totaluts)+array_sum($totaluas))/3, 1) ?></td>
+                        <td></td>
                     </tr>
+                <tr class="font-weight-bold">
+                    <td colspan="<?php if (count($kd)>2){echo 4+count($kd)-2;}else{echo 4;} ?>">Rata Rata</td>
+                    <?php if (count($totalkd )!= null){
+                        echo '<td>'. number_format(array_sum($totalkd)/count($datanilai), 1) .'</td>';
+                    } ?>
+                    <td><?php echo number_format(array_sum($totaluts)/count($datanilai), 1)?></td>
+                    <td><?php echo number_format(array_sum($totaluas)/count($datanilai), 1)?></td>
+                    <td><?php echo number_format(array_sum($nilaiakhirr)/count($datanilai), 1)?></td>
+                    <td></td>
+                </tr>
+                <tr class="font-weight-bold">
+                    <td colspan="<?php if (count($kd)>2){echo 4+count($kd)-2;}else{echo 4;} ?>">Nilai Tertinggi</td>
+                    <?php if (count($totalkd )!= null){
+                        echo '<td>'. number_format(max($totalkd)/count($arraykd), 1) .'</td>';
+                    } ?>
+                    <td><?php echo max($totaluts) ?></td>
+                    <td><?php echo max($totaluas) ?></td>
+                    <td><?php echo max($nilaiakhirr) ?></td>
+                    <td></td>
+                </tr>
+                <tr class="font-weight-bold">
+                    <td colspan="<?php if (count($kd)>2){echo 4+count($kd)-2;}else{echo 4;} ?>">Nilai Terendah</td>
+                    <?php if (count($totalkd)!= null){
+                        echo '<td>'. number_format(min($totalkd)/count($arraykd), 1) .'</td>';
+                    } ?>
+                    <td><?php echo min($totaluts) ?></td>
+                    <td><?php echo min($totaluas) ?></td>
+                    <td><?php echo min($nilaiakhirr) ?></td>
+                    <td></td>
+                </tr>
             </table>
         </div>
     </div>
