@@ -165,7 +165,14 @@ class C_Guru extends CI_Controller
     }
     public function wali()
     {
-        echo 'wali';
+        $id_guru =  $this->session->userdata('username');
+        $data['datasiswa'] = $this->M_Guru->walikelas($id_guru);
+        $data['datanilai'] = $this->M_Guru->walinilai($id_guru);
+
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('guru/v_jadwal', $data);
+        $this->load->view('layout/footer');
     }
 
     public function report_guru($kelas){

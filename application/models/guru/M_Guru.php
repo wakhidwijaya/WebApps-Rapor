@@ -164,4 +164,12 @@ class M_Guru extends CI_Model
         WHERE ts.kelas = '.$kelas.' AND tn.id_siswa = ts.nis AND ts.kelas = tk.id_kelas AND tm.nip = '.$nip.' AND tm.id_kd = tn.id_kd');
         return $query->result_array();
     }
+    function walikelas($id_guru){
+        $query = $this->db->query('SELECT * FROM `tb_siswa` WHERE wali_kelas = (SELECT id_guru FROM tb_guru WHERE nip = '.$id_guru.')');
+        return $query->result_array();
+    }
+    function walinilai($id_guru){
+        $query = $this->db->query('SELECT * FROM tb_nilai WHERE id_siswa IN (SELECT nis FROM tb_siswa WHERE wali_kelas = (SELECT id_guru FROM tb_guru WHERE nip = 2019))');
+        return $query->result_array();
+    }
 }

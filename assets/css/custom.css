@@ -78,14 +78,14 @@ h3 {
 .card-custom-left {
   background-image: url("../img/lg-bg2.jpg");
   background-size: cover;
-  height: 350px;
+  height: 400px;
   border: 0em;
   border-top-left-radius: 20px !important;
   border-bottom-left-radius: 20px !important;
 }
 
 .card-custom-right {
-  height: 350px;
+  height: 400px;
   border: 0em;
   border-top-right-radius: 20px !important;
   border-bottom-right-radius: 20px !important;
@@ -105,7 +105,9 @@ h3 {
   width: 72%;
   margin-left: 15%;
 }
-
+.form-custom .btn {
+  border-radius: 5rem;
+}
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;
@@ -135,6 +137,7 @@ h3 {
   border-radius: 0.25rem;
   transition: all 0.1s ease-in-out;
 }
+
 
 .form-label-group input::-webkit-input-placeholder {
   color: transparent;
