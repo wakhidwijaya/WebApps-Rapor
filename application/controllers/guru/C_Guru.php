@@ -42,6 +42,7 @@ class C_Guru extends CI_Controller
     {
         $id_guru =  $this->session->userdata('username');
         $data['kd'] = $this->M_Guru->kd($kelas, $id_guru);
+        $data['kelas'] = $kelas;
 
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
@@ -161,5 +162,19 @@ class C_Guru extends CI_Controller
     public function wali()
     {
         echo 'wali';
+    }
+
+    public function report_guru($kelas){
+        $id_guru =  $this->session->userdata('username');
+        $data['kd'] = $this->M_Guru->kd($kelas, $id_guru);
+        $data['nilaikd'] =$this->M_Guru->report($kelas, $id_guru);
+        $data['datanilai'] =$this->M_Guru->datanilai($kelas, $id_guru);
+        $data['kelas'] = $kelas;
+
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('guru/v_report', $data);
+        $this->load->view('layout/footer');
+
     }
 }
