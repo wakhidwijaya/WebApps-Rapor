@@ -78,5 +78,6 @@ $route['siswa'] = 'siswa/C_Siswa/index';
 $route['siswa/chart'] = 'siswa/C_Siswa/chart';
 $route['siswa/jadwal'] = 'siswa/C_Siswa/jadwal';
 $route['siswa/nilai'] = 'siswa/C_Siswa/nilai';
+$route['siswa/nilaiakhir'] = 'siswa/C_Siswa/nilai_akhir';
 $route['siswa/edit/(:num)'] = 'siswa/C_Siswa/edit/$1';
 $route['siswa/edit'] = 'siswa/edit';

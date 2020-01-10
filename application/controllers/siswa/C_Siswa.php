@@ -41,6 +41,13 @@ class C_Siswa extends CI_Controller
         $this->load->view('layout/footer');
     }
 
+    public function nilai_akhir()
+    {
+        $id_siswa =  $this->session->userdata('username');
+        $data['nilai'] = $this->M_Siswa->nilai_akhir($id_siswa);
+        print_r($data);
+    }
+
     public function jadwal()
     {
         $id_siswa =  $this->session->userdata('username');
