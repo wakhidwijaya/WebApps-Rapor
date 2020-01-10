@@ -8,6 +8,7 @@
 <aside class="control-sidebar control-sidebar-dark">
 </aside>
 </div>
+</div>
 
 <script src="<?php echo base_url() ?>assets/adminlte/plugins/jquery/jquery.min.js"></script>
 <!--<script src="http://api.iksgroup.co.id/apijs/lokasiapi.js"></script>-->
@@ -34,8 +35,6 @@
 <script src="<?php echo base_url() ?>assets/adminlte/dist/js/pages/dashboard.js"></script>
 <script src="<?php echo base_url() ?>assets/adminlte/dist/js/demo.js"></script>
 <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
-<script src="<?php echo base_url() ?>assets/js/jquery.nicescroll.js"></script>
-
 
 </body>
 

@@ -26,6 +26,7 @@
     }
   </style>
   <script src="<?php echo base_url() ?>assets/js/Chart.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Oswald:600&display=swap" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed text-sm">
@@ -60,3 +61,5 @@
 
       </ul>
     </nav>
+
+    <div id="scroll">

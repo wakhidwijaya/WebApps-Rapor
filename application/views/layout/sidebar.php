@@ -53,7 +53,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo base_url('guru/wali')?>" class="nav-link">
+              <a href="<?php echo base_url('guru/wali') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Kelas</p>
               </a>
@@ -98,13 +98,13 @@
             <p>Nilai</p>
           </a>
         </li>
-        <li class="nav-header">MISCELLANEOUS</li>
+        <!-- <li class="nav-header">MISCELLANEOUS</li>
         <li class="nav-item">
           <a href="https://adminlte.io/docs/3.0" class="nav-link">
             <i class="nav-icon fas fa-file"></i>
             <p>Documentation</p>
           </a>
-        </li>
+        </li> -->
       </ul>
     </nav>
 
