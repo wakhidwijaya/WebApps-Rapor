@@ -6,22 +6,28 @@
             </div>
             <table class="table table-sm table-bordered text-center">
                 <tr>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2">NIM</th>
-                    <th rowspan="2">Nama</th>
-                    <th rowspan="2">Kelas</th>
-                    <th colspan="<?php if (count($kd) > 2){ echo count($kd)+1;} else {echo count($kd);} ?>">Nilai</th>
-                    <th rowspan="2">ket</th>
+                    <th rowspan="3" class="align-middle">No</th>
+                    <th rowspan="3" class="align-middle">NIM</th>
+                    <th rowspan="3" class="align-middle">Nama</th>
+                    <th rowspan="3" class="align-middle">Kelas</th>
+                    <th colspan="<?php if (count($kd) > 2){ echo count($kd)+2;} else {echo count($kd)+1;} ?>" class="align-middle">Nilai</th>
+                    <th rowspan="3"class="align-middle">ket</th>
                 </tr>
+                    <tr>
+                <?php if (count($kd) > 2){ ?>
+                        <th colspan="<?php echo count($kd)-2?>">Kompetensi Dasar</th>
+                <?php }?>
+                        <?php if (count($kd) > 2){?>
+                            <th rowspan="2" class="align-middle">AVG KD</th>
+                        <?php } ?>
+                        <th rowspan="2" class="align-middle">UTS</th>
+                        <th rowspan="2" class="align-middle">UAS</th>
+                        <th rowspan="2" class="align-middle">Nilai Akhir</th>
+                    </tr>
                 <tr>
                     <?php for ($i = 1; $i <= count($kd)-2; $i++){ ?>
-                        <td>KD <?php echo $i?></td>
+                        <th>KD <?php echo $i?></th>
                     <?php } ?>
-                    <?php if (count($kd) > 2){?>
-                        <td>AVG KD</td>
-                    <?php } ?>
-                    <td>UTS</td>
-                    <td>UAS</td>
                 </tr>
                 <?php $totalkd = array(); $totaluts = array(); $totaluas = array(); $i = 1; foreach ($datanilai as $siswa){?>
                     <tr>
@@ -40,13 +46,13 @@
                                     array_push($ujian, $nilai['nilai']);
                                     array_push($totaluas, $nilai['nilai']);
                                 }
-                                array_push($totalkd, array_sum($arraykd));
                             }
                         }
                          if ($arraykd != null){
                             foreach ($arraykd as $kdnilai){
                                 echo '<td>'.$kdnilai.'</td>';
                             }
+                            array_push($totalkd,  array_sum($arraykd));
                         echo '<td>'.array_sum($arraykd)/count($arraykd).'</td>';
                         }?>
                         <?php foreach ($ujian as $nilaiujian){ ?>
@@ -55,11 +61,14 @@
                         <td></td>
                     </tr>
                 <?php } ?>
-                    <tr>
+                    <tr class="font-weight-bold">
                         <td colspan="4">Total Nilai</td>
+                        <td>urung</td>
+                        <td>urung</td>
                         <td><?php echo array_sum($totalkd) ?></td>
                         <td><?php echo array_sum($totaluts) ?></td>
                         <td><?php echo array_sum($totaluas) ?></td>
+                        <td></td>
                     </tr>
             </table>
         </div>
