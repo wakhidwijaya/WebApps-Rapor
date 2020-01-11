@@ -58,12 +58,12 @@
                                 echo '<td>'.$kdnilai.'</td>';
                             }
                             array_push($totalkd,  array_sum($arraykd));
-                        echo '<td>'.number_format(array_sum($arraykd)/count($arraykd), 1).'</td>';
+                        echo '<td>'. number_format(array_sum($arraykd)/count($arraykd), 1).'</td>';
                         }?>
                         <?php foreach ($ujian as $nilaiujian){ ?>
                             <td><?php echo $nilaiujian ?></td>
                         <?php } ?>
-                        <td><?php echo$nilaiakhir = number_format((array_sum($arraykd)+array_sum($ujian))/3, 1) ?></td>
+                        <td><?php echo $nilaiakhir = number_format(( number_format(array_sum($arraykd)/count($arraykd), 1)+array_sum($ujian))/3, 1) ?></td>
                         <td></td>
                     </tr>
                 <?php array_push($nilaiakhirr, $nilaiakhir); } ?>
